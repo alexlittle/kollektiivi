@@ -4,7 +4,7 @@ from .models import Page, Tag
 
 # for Page model
 class PageTranslationOptions(TranslationOptions):
-    fields = ('title', 'menu_title', 'body')
+    fields = ('title', 'body')
 
 # for Tag model
 class TagTranslationOptions(TranslationOptions):

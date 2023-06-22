@@ -4,8 +4,7 @@ from kollektiivi.models import Tracker, Page, Tag
 
 
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'title_en', 'title_fi',
-                    'menu_title', 'slug', 'menu_order_by', 'on_menu', 'on_footer', 'active')
+    list_display = ('title', 'title_en', 'title_fi', 'slug', 'menu_order_by', 'on_menu', 'on_footer', 'active')
     search_fields = ['title', 'slug', 'body']
 
 

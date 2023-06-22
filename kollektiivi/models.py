@@ -8,7 +8,6 @@ from ckeditor.fields import RichTextField
 
 class Page(models.Model):
     title = models.CharField(blank=False, max_length=200)
-    menu_title = models.CharField(blank=True, null=True, default=None, max_length=200)
     body = RichTextField(blank=True, null=True, default=None)
     slug = models.SlugField()
     menu_order_by = models.IntegerField(default=0)
@@ -28,7 +27,7 @@ class Page(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.title_en)
+            self.slug = slugify(self.title_fi)
         super(Page, self).save(*args, **kwargs)
 
 
@@ -51,7 +50,7 @@ class Tag(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.name_en)
+            self.slug = slugify(self.name_fi)
         super(Tag, self).save(*args, **kwargs)
 
 

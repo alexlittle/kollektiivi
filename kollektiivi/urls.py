@@ -11,7 +11,9 @@ urlpatterns = [
     path('', HomeView.as_view(), name="home"),
     path('tag/<str:slug>/', TagView.as_view(), name="tag"),
     path('admin/', admin.site.urls),
+    path('uutiset/', include('blog.urls')),
     path('<str:slug>/', PageView.as_view(), name="page"),
+    
 ]
 
 if settings.DEBUG:

@@ -19,7 +19,7 @@ class Blog(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.name_en)
+            self.slug = slugify(self.name_fi)
         super(Blog, self).save(*args, **kwargs)
 
     def get_hits(self):

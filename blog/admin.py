@@ -6,7 +6,7 @@ from blog.models import Blog
 
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('display_date', 'title',  'slug', 'active', 'show_preview_url', 'hit_count')
+    list_display = ('display_date', 'title', 'title_fi', 'title_en', 'slug', 'active', 'show_preview_url', 'hit_count')
     search_fields = ['title', 'body', 'slug']
     ordering = ['-display_date', 'title']
 

@@ -9,19 +9,21 @@
   </button>
   
   <a class="navbar-brand" href="{% url 'home' %}">
-    <img src="{% static "shop/images/logo-60px.png" %}" height="60px" class="d-inline-block align-top" alt="">
-    Alex Little Wood Designs
+    <img src="{% static "kollektiivi/images/kollektiivi-logo-50px.png" %}" height="50px" class="d-inline-block align-top" alt="Kollektiivi logo">
   </a>
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
   <form action="{% url 'set_language' %}" method="post" id="langform">{% csrf_token %}
 	    <input name="next" type="hidden" value="{{ redirect_to }}">
     <ul class="navbar-nav nav-pills nav-fill btn-group">
     	<li class="nav-item">
-        	<a href="{% url 'home' %}" class="nav-link">{% trans 'Home' %}</a>
+        	<a href="{% url 'home' %}" class="nav-link">{% trans 'Etusivu' %}</a>
+      	</li>
+      	<li class="nav-item">
+        	<a href="{% url 'blog:uutiset' %}" class="nav-link">{% trans 'Uutiset' %}</a>
       	</li>
       {% for item in MENU_ITEMS %}
       	<li class="nav-item">
-        	<a href='/{{ item.slug }}' class="nav-link">{{ item.menu_title }}</a>
+        	<a href='/{{ item.slug }}' class="nav-link">{{ item.title }}</a>
       	</li>
       {% endfor %}
       <li class="nav-item">
@@ -42,8 +44,7 @@
   </div>
 </nav>
 <div class="banner"></div>
-<div class="banner-stripe"></div>
-<div class="banner-stripe"></div>
+
 	    
 	    
 {% endblock content %}
