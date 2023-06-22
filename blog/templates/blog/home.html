@@ -1,0 +1,19 @@
+{% extends "base.html" %} 
+{% load i18n %} 
+{% load static %}
+
+{% block extra_head_title %}
+	{% trans 'Alex Little - News' %}
+{% endblock extra_head_title %}
+
+{% block content %}
+<h1>{% trans 'News' %}</h1>
+
+{% if page.object_list %}
+	{% for post in page.object_list %}
+		{% include "blog/blog-row.html" %}
+	{% endfor %}
+	
+	{% include "includes/pagination.html" %}
+{% endif %}
+{% endblock %}

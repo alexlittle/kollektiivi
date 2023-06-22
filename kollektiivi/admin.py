@@ -1,0 +1,23 @@
+from django.contrib import admin
+
+from kollektiivi.models import Tracker, Page, Tag
+
+
+class PageAdmin(admin.ModelAdmin):
+    list_display = ('title', 'title_en', 'title_fi',
+                    'menu_title', 'slug', 'menu_order_by', 'on_menu', 'on_footer', 'active')
+    search_fields = ['title', 'slug', 'body']
+
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name', 'name_en', 'name_fi', 'slug')
+
+
+
+class TrackerAdmin(admin.ModelAdmin):
+    list_display = ('tracker_date', 'ip', 'url', 'agent')
+
+
+admin.site.register(Page, PageAdmin)
+admin.site.register(Tag, TagAdmin)
+admin.site.register(Tracker, TrackerAdmin)

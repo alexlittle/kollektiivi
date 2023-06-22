@@ -1,0 +1,14 @@
+{% extends "base.html" %} 
+{% load i18n %} 
+{% load static %}
+
+{% block content %}
+
+<h1 class="strapline">{% trans 'Designed and hand-crafted in Joensuu, Finland' %}</h1>
+
+{% if page.body %}
+	{{ page.body|safe }}
+{% endif %}
+
+
+{% endblock %}

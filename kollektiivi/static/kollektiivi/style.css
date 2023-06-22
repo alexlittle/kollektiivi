@@ -1,0 +1,333 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+/*
+694e33 dark brown
+e2d3b9 light brown
+*/
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  color: #5a5a5a;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #694e33;
+  padding-top: 1px;
+  margin-top: 20px;
+}
+
+/* Customise the navbar */
+
+.navbar-light {
+	background-color: #fff;
+  	height: 120px;
+}
+
+.navbar-light .navbar-brand {
+	color: #5a5a5a;
+	
+}
+
+.navbar-brand {
+	padding: 5px 20px 3px 10px;
+}
+
+.navbar-light .navbar-nav > .nav-item > a:focus, 
+.navbar-light .navbar-nav > .nav-item > a:hover 
+{
+	color: #694e33;
+}
+
+.navbar-light .navbar-nav > .active  a.nav-link, 
+.navbar-light .navbar-nav > .nav-item .active > a.nav-link:focus, 
+.navbar-light .navbar-nav > .nav-item .active > a.nav-link:hover {
+    color: #694e33;
+    
+}
+
+.navbar-light .navbar-nav .nav-link {
+    background-color: #fff;
+}
+
+.nav-item {
+	background-color: #fff;
+}
+select.language {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+/* Mapping
+-------------------------------------------------- */
+#mapid { height: 300px; }
+
+
+/* h tags
+-------------------------------------------------- */
+
+.h1, .h2, h1, h2 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+h1 {
+	color: #694e33;
+	font-size: 150%;
+}
+
+h2 {
+	color: #694e33;
+	font-size: 130%;
+}
+
+h3 {
+	color: #694e33;
+	font-size: 120%;
+	margin-top: 20px;
+}
+
+a {
+	color: #694e33;
+}
+a:hover, a:focus {
+	text-decoration: none;
+	color: #694e33;
+}
+
+div.content-page a {
+	color: #694e33;
+	text-decoration: underline;
+}
+
+#mapid a {
+	text-decoration: none;
+}
+
+div.banner {
+	width: 100%;
+	background-position: center;
+	height: 50px;
+	border-top: 1px solid #694e33;
+	border-bottom: 1px solid #694e33;
+}
+
+div.banner-stripe {
+	width: 100%;
+	margin: 1px 0px;
+	border-bottom: 1px solid #694e33;
+	height: 3px;
+}
+
+.clearfix {
+	clear:both; 
+	float: none;
+	content: "";
+  	display: table;
+}
+
+h1.strapline {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+div.centered {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
+}
+
+/* CATEGORY CARD
+-------------------------------------------------- */
+div.category-card,
+div.product-card {
+  width: 300px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 40px;
+  margin-right: 40px;
+  align: center;
+}
+
+div.category-container{
+  text-align: center;
+  padding: 10px 20px;
+}
+
+h2.category-card {
+	margin-top: 10px;
+}
+
+
+div.product_card_image_missing,
+div.category_card_image_missing {
+	min-height: 224px;
+	text-align: center;
+	font-size: 150%;
+	opacity: 0.4;
+	padding-top: 70px;
+}
+
+div.product_image_missing {
+	min-height: 300px;
+	text-align: center;
+	font-size: 150%;
+	opacity: 0.6;
+	padding-top: 70px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin-bottom: 50px;
+}
+
+div.products {
+	margin-top: 40px;	
+}
+
+/* PRODUCT CARD
+-------------------------------------------------- */
+
+h2.product-card {
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+.product-card-price {
+	margin-top: 10px;
+	float: right;
+	font-weight: normal;
+}
+
+div.product-container{
+  text-align: left;
+  padding: 10px 20px;
+  min-height: 130px;
+}
+
+
+img.product-image {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin-bottom: 50px;
+}
+
+img.product-extra-image {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin-right: 10px;
+}
+
+div.product-price {
+	color: #694e33;
+	font-size: 150%;
+	margin-bottom: 10px;
+}
+
+.buy-now {
+	display: inline-block;
+	margin: 5px 5px 5px 0;
+	padding: 5px 10px;
+	background-color: #694e33;
+	border: 1px solid #694e33;
+	color: #fff;
+}
+
+.buy-now:hover,
+.buy-now:focus{
+	background-color: #fff;
+	color: #694e33;
+}
+
+div.product-desc {
+	margin-top: 30px;
+}
+
+.material-tag,
+.finish-tag {
+	float: left;
+	margin: 5px 5px 5px 0;
+	padding: 5px 10px;
+	border: 1px solid #694e33;
+	color: #694e33;
+}
+
+.material-tag:hover,
+.finish-tag:hover,
+.material-tag:focus,
+.finish-tag:focus {
+	background-color: #694e33;
+	color: #fff
+}
+
+.breadcrumb {
+	padding-left: 0;
+	color: #694e33;
+	background-color: #fff;
+}
+
+.breadcrumb-item > a:hover,
+.breadcrumb-item > a:focus,
+.list-unstyled > li > a:hover,
+.list-unstyled > li > a:focus {
+	text-decoration: underline;
+}
+
+.list-unstyled {
+	margin-top: 20px;
+}
+
+/* page specific
+*/
+
+p.indent {
+	margin-left: 40px;
+}

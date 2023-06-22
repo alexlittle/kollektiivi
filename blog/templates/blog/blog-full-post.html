@@ -1,0 +1,28 @@
+{% extends "base.html" %} 
+{% load i18n %} 
+{% load static %}
+{% load thumbnail %}
+
+{% block extra_head_title %}
+	{% trans 'Alex Little - News' %}
+{% endblock extra_head_title %}
+
+{% block content %}
+{% if blog %}
+<div class="row blog-single">
+	{% if blog.image %}
+	  <div class="col-sm-2 blog-icon">
+  		{% thumbnail blog.image "130x130" format="PNG" padding=True as im %}
+	 		<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="thumbnail blog-single-image" alt="{{ blog.title }}">
+  		{% endthumbnail %}
+	  </div>
+  {% endif %}
+  <div class="col-sm-8">
+		<h1>{{ blog.title }}</h1>
+		<p>{{ blog.display_date|date:"d M Y"  }}</p>
+		{{ blog.body|safe }}
+	</div>
+</div>
+{% endif %}
+
+{% endblock %}

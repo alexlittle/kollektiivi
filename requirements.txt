@@ -1,0 +1,6 @@
+django==4.2.1
+Pillow==9.5.0
+sorl-thumbnail>=12.4,<13.0
+django-ckeditor==6.5.1
+mysqlclient==2.1.1
+django-modeltranslation==0.18.9

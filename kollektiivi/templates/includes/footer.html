@@ -1,0 +1,16 @@
+<div class="clearfix"></div>
+<footer class="footer">
+	  <div class="banner-stripe"></div>
+      <div class="container">
+      	<ul class="list-unstyled"> 
+			{% for item in FOOTER_ITEMS %}
+      		<li>
+        		<a href='/{{ item.slug }}'>{{ item.menu_title }}</a>
+      		</li>
+      	{% endfor %}
+        </ul>
+      </div>
+  	<div class="footer-copyright text-center py-3">&copy; {% now "Y" %} Copyright 
+    <a href="/"> Alex Little</a>
+  </div>
+</footer>  
