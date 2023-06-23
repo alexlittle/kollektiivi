@@ -4,6 +4,16 @@
 <html lang="en">
 	<head>
 	
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-42CGX4LKEC"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		
+		  gtag('config', 'G-42CGX4LKEC');
+		</script>
+		
 		<title>{% block extra_head_title %}
 			   {% endblock extra_head_title %}
 			   {% trans 'Kollektiivi' %}</title>
@@ -15,15 +25,7 @@
     	<meta name="title" content="Alex Little Wood Designs">
     	<meta name="author" content="Alex Little">
     	
-    	<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-PXWTY582QB"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		
-		  gtag('config', 'G-PXWTY582QB');
-		</script>
+
     	
     	<link rel="stylesheet" href="{% static 'includes/bootstrap-4.6.2.min.css' %}"/>
 		<script src="{% static 'includes/jquery-3.5.1.slim.min.js' %}"></script>
