@@ -14,7 +14,7 @@ urlpatterns = [
     path('jäseniä/<str:slug>/', MemberProfileView.as_view(), name="member_profile"),
     path('uutiset/', include('blog.urls')),
     path('<str:slug>/', PageView.as_view(), name="page"),
-    
+
 ]
 
 if settings.DEBUG:

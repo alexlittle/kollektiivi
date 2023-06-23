@@ -20,4 +20,3 @@ class Command(BaseCommand):
         pages_file = os.path.join(fixture_root, 'pages.json')
         with open(pages_file, 'w') as f:
             call_command('dumpdata', "kollektiivi.page", indent=4, stdout=f)
-

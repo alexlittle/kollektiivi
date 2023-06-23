@@ -31,8 +31,6 @@ class Page(models.Model):
         super(Page, self).save(*args, **kwargs)
 
 
-
-
 class Tag(models.Model):
     name = models.TextField(blank=False, null=False)
     description = RichTextField(blank=True, null=True, default=None)
@@ -64,7 +62,7 @@ class Member(models.Model):
     contact = RichTextField(blank=True, null=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     def __str__(self):
         return self.name
 
@@ -77,7 +75,8 @@ class Member(models.Model):
         if not self.id:
             self.slug = slugify(self.name_fi)
         super(Member, self).save(*args, **kwargs)
-        
+
+
 class Tracker (models.Model):
     tracker_date = models.DateTimeField(default=timezone.now)
     ip = models.GenericIPAddressField()

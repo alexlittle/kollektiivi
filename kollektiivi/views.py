@@ -30,6 +30,7 @@ class PageView(TemplateView):
         context['page'] = self.object
         return context
 
+
 class MembersView(TemplateView):
 
     template_name = 'kollektiivi/members.html'
@@ -39,7 +40,8 @@ class MembersView(TemplateView):
         context['members_current'] = Member.objects.filter(active=True)
         context['members_previous'] = Member.objects.filter(active=False)
         return context
-    
+
+
 class MemberProfileView(TemplateView):
 
     template_name = 'kollektiivi/member-profile.html'
@@ -52,6 +54,7 @@ class MemberProfileView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['member'] = self.object
         return context
+
 
 class TagView(TemplateView):
 

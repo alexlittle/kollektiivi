@@ -11,8 +11,10 @@ class PageAdmin(admin.ModelAdmin):
 class TagAdmin(admin.ModelAdmin):
     list_display = ('name', 'name_en', 'name_fi', 'slug')
 
+
 class MemberAdmin(admin.ModelAdmin):
     list_display = ('name', 'name_en', 'name_fi', 'slug', 'active')
+
 
 class TrackerAdmin(admin.ModelAdmin):
     list_display = ('tracker_date', 'ip', 'url', 'agent')
