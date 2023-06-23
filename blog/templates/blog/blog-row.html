@@ -8,7 +8,7 @@
   <div class="col-sm-8">
   	<h3 class="blog"><a href="{% url 'blog:article' post.slug %}">{{ post.title }}</a></h3>
   	{{ post.body|safe|truncatewords_html:75 }}
-  	<a href="{% url 'blog:article' post.slug %}">{% trans 'lisää' %}</a>
+  	<a href="{% url 'blog:article' post.slug %}">{% trans 'Lue lisää' %}</a>
   	
   </div>
   {% if post.image %}

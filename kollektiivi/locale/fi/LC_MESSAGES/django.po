@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-23 07:08+0000\n"
+"POT-Creation-Date: 2023-06-23 07:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "Uutiset"
 msgstr ""
 
 #: blog/templates/blog/blog-row.html:11
-msgid "lisää"
+msgid "Lue lisää"
 msgstr ""
 
 #: kollektiivi/models.py:22
@@ -44,11 +44,19 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
-#: kollektiivi/models.py:69
+#: kollektiivi/models.py:71
+msgid "Jäsen"
+msgstr ""
+
+#: kollektiivi/models.py:72
+msgid "Jäseniä"
+msgstr ""
+
+#: kollektiivi/models.py:90
 msgid "Tracker"
 msgstr ""
 
-#: kollektiivi/models.py:70
+#: kollektiivi/models.py:91
 msgid "Trackers"
 msgstr ""
 

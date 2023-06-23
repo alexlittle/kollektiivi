@@ -54,8 +54,29 @@ class Tag(models.Model):
         super(Tag, self).save(*args, **kwargs)
 
 
+class Member(models.Model):
+    name = models.CharField(blank=False, max_length=200)
+    body = RichTextField(blank=True, null=True, default=None)
+    slug = models.SlugField()
+    order_by = models.IntegerField(default=0)
+    photo = models.FileField(upload_to="members", blank=True, default=None)
+    active = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.name
 
+    class Meta:
+        verbose_name = _('Jäsen')
+        verbose_name_plural = _('Jäseniä')
+        ordering = ['name']
 
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.name_fi)
+        super(Member, self).save(*args, **kwargs)
+        
 class Tracker (models.Model):
     tracker_date = models.DateTimeField(default=timezone.now)
     ip = models.GenericIPAddressField()
