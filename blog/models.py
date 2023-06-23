@@ -9,7 +9,7 @@ from kollektiivi.models import Tracker
 class Blog(models.Model):
     display_date = models.DateTimeField(default=timezone.now)
     title = models.TextField(blank=False)
-    slug = models.SlugField()
+    slug = models.SlugField(blank=True, default=None)
     body = RichTextField()
     image = models.FileField(upload_to="images", blank=True, default=None)
     active = models.BooleanField(default=False)
@@ -19,7 +19,7 @@ class Blog(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.name_fi)
+            self.slug = slugify(self.title_fi)
         super(Blog, self).save(*args, **kwargs)
 
     def get_hits(self):

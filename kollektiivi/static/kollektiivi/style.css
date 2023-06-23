@@ -3,8 +3,9 @@
 /* Padding below the footer and lighter body text */
 
 /*
-694e33 dark brown
-e2d3b9 light brown
+000000 black
+ed8c0e orange
+efca05 yellow
 */
 
 html {
@@ -17,13 +18,7 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
-.footer {
-  bottom: 0;
-  width: 100%;
-  border-top: 1px solid #694e33;
-  padding-top: 1px;
-  margin-top: 20px;
-}
+
 
 /* Customise the navbar */
 
@@ -75,36 +70,36 @@ select.language {
 -------------------------------------------------- */
 
 .h1, .h2, h1, h2 {
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 h1 {
-	color: #694e33;
+	color: #000000;
 	font-size: 150%;
 }
 
 h2 {
-	color: #694e33;
+	color: #000000;
 	font-size: 130%;
 }
 
 h3 {
-	color: #694e33;
+	color: #000000;
 	font-size: 120%;
 	margin-top: 20px;
 }
 
 a {
 	color: #694e33;
+	text-decoration: underline;
 }
 a:hover, a:focus {
 	text-decoration: none;
-	color: #694e33;
+	color: #ed8c0e;
 }
 
 div.content-page a {
-	color: #694e33;
+	color: #ed8c0e;
 	text-decoration: underline;
 }
 
@@ -115,16 +110,28 @@ div.content-page a {
 div.banner {
 	width: 100%;
 	background-position: center;
-	height: 50px;
-	border-top: 1px solid #694e33;
-	border-bottom: 1px solid #694e33;
+	height: 0px;
+	border-bottom: 1px solid #000000;
 }
 
-div.banner-stripe {
+div.banner-stripe-1 {
 	width: 100%;
-	margin: 1px 0px;
-	border-bottom: 1px solid #694e33;
+	margin: 0px 0px;
+	border-bottom: 3px solid #ed8c0e;
 	height: 3px;
+}
+div.banner-stripe-2 {
+	width: 100%;
+	margin: 0px 0px;
+	border-bottom: 3px solid #efca05;
+	height: 3px;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  padding-top: 1px;
+  margin-top: 20px;
 }
 
 .clearfix {
@@ -134,7 +141,13 @@ div.banner-stripe {
   	display: table;
 }
 
-h1.strapline {
+h1.brand {
+	text-align: center;
+	margin-bottom: 10px;
+	font-size: 300%;
+}
+
+h2.strapline {
 	text-align: center;
 	margin-bottom: 50px;
 }
@@ -190,123 +203,6 @@ div.centered {
   }
 }
 
-/* CATEGORY CARD
--------------------------------------------------- */
-div.category-card,
-div.product-card {
-  width: 300px;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 40px;
-  margin-right: 40px;
-  align: center;
-}
-
-div.category-container{
-  text-align: center;
-  padding: 10px 20px;
-}
-
-h2.category-card {
-	margin-top: 10px;
-}
-
-
-div.product_card_image_missing,
-div.category_card_image_missing {
-	min-height: 224px;
-	text-align: center;
-	font-size: 150%;
-	opacity: 0.4;
-	padding-top: 70px;
-}
-
-div.product_image_missing {
-	min-height: 300px;
-	text-align: center;
-	font-size: 150%;
-	opacity: 0.6;
-	padding-top: 70px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	margin-bottom: 50px;
-}
-
-div.products {
-	margin-top: 40px;	
-}
-
-/* PRODUCT CARD
--------------------------------------------------- */
-
-h2.product-card {
-	margin-top: 10px;
-	margin-bottom: 0;
-}
-
-.product-card-price {
-	margin-top: 10px;
-	float: right;
-	font-weight: normal;
-}
-
-div.product-container{
-  text-align: left;
-  padding: 10px 20px;
-  min-height: 130px;
-}
-
-
-img.product-image {
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	margin-bottom: 50px;
-}
-
-img.product-extra-image {
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	margin-right: 10px;
-}
-
-div.product-price {
-	color: #694e33;
-	font-size: 150%;
-	margin-bottom: 10px;
-}
-
-.buy-now {
-	display: inline-block;
-	margin: 5px 5px 5px 0;
-	padding: 5px 10px;
-	background-color: #694e33;
-	border: 1px solid #694e33;
-	color: #fff;
-}
-
-.buy-now:hover,
-.buy-now:focus{
-	background-color: #fff;
-	color: #694e33;
-}
-
-div.product-desc {
-	margin-top: 30px;
-}
-
-.material-tag,
-.finish-tag {
-	float: left;
-	margin: 5px 5px 5px 0;
-	padding: 5px 10px;
-	border: 1px solid #694e33;
-	color: #694e33;
-}
-
-.material-tag:hover,
-.finish-tag:hover,
-.material-tag:focus,
-.finish-tag:focus {
-	background-color: #694e33;
-	color: #fff
-}
 
 .breadcrumb {
 	padding-left: 0;
@@ -321,13 +217,3 @@ div.product-desc {
 	text-decoration: underline;
 }
 
-.list-unstyled {
-	margin-top: 20px;
-}
-
-/* page specific
-*/
-
-p.indent {
-	margin-left: 40px;
-}
