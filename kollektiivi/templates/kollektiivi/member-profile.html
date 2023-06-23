@@ -2,10 +2,22 @@
 {% load i18n %} 
 {% load static %}
 
+{% block extra_head_title %}
+	{{ member.name }}
+{% endblock extra_head_title %}
 
 {% block content %}
 
-<h1>{{ page.title }}</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">{% trans 'Kollektiivi' %}</a></li>
+    <li class="breadcrumb-item" aria-current="page">
+    	<a href="{% url 'members' %}">{% trans 'Jäseniä' %}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ member.name }}</li>
+  </ol>
+</nav>
+
+<h1>{{ member.name }}</h1>
 
 <div class="content-page">
 {% if page.body %}

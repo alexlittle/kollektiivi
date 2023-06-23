@@ -18,7 +18,7 @@ class Page(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['title']
+        ordering = ['menu_order_by', 'title']
         verbose_name = _('Page')
         verbose_name_plural = _('Pages')
 
@@ -61,6 +61,7 @@ class Member(models.Model):
     order_by = models.IntegerField(default=0)
     photo = models.FileField(upload_to="members", blank=True, default=None)
     active = models.BooleanField(default=False)
+    contact = RichTextField(blank=True, null=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -70,7 +71,7 @@ class Member(models.Model):
     class Meta:
         verbose_name = _('Jäsen')
         verbose_name_plural = _('Jäseniä')
-        ordering = ['name']
+        ordering = ['order_by', 'name']
 
     def save(self, *args, **kwargs):
         if not self.id:

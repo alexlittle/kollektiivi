@@ -2,16 +2,30 @@
 {% load i18n %} 
 {% load static %}
 
+{% block extra_head_title %}
+	{% trans 'Jäseniä' %}
+{% endblock extra_head_title %}
 
 {% block content %}
 
-<h1>{{ page.title }}</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">{% trans 'Kollektiivi' %}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{% trans 'Jäseniä' %}</li>
+  </ol>
+</nav>
 
+<h1>{% trans 'Jäseniä' %}</h1>
+
+<h2>{% trans 'Nykyiset Jäsenet' %}</h2>
 <div class="content-page">
 {% if page.body %}
 	{{ page.body|safe }}
 {% endif %}
 
+<h2>{% trans 'Aiemmat Jäsenet' %}</h2>
+
 </div>
+
 
 {% endblock %}
