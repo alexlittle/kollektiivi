@@ -5,8 +5,8 @@ from blog.models import Blog
 
 class LatestNews(Feed):
     description_template = 'blog/feed.html'
-    title = "Alex Little - News"
-    link = "/news/"
+    title = "Kollektiivi - Uutiset"
+    link = "/uutiset/"
     description = ""
 
     def items(self):

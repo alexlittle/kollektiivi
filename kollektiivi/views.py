@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 
-from kollektiivi.models import Page, Tag
+from kollektiivi.models import Page, Tag, Member
 
 
 class HomeView(TemplateView):
@@ -30,6 +30,28 @@ class PageView(TemplateView):
         context['page'] = self.object
         return context
 
+class MembersView(TemplateView):
+
+    template_name = 'kollektiivi/members.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['members_current'] = Member.objects.filter(active=True)
+        context['members_previous'] = Member.objects.filter(active=False)
+        return context
+    
+class MemberProfileView(TemplateView):
+
+    template_name = 'kollektiivi/member-profile.html'
+
+    def get(self, request, *args, **kwargs):
+        self.object = get_object_or_404(Member, slug=kwargs['slug'])
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['member'] = self.object
+        return context
 
 class TagView(TemplateView):
 
