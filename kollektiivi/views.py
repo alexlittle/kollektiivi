@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from kollektiivi.models import Page, Tag, Member
 from blog import utils
 
+
 class HomeView(TemplateView):
 
     template_name = 'kollektiivi/home.html'

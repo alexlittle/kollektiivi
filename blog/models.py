@@ -19,7 +19,7 @@ class Blog(models.Model):
         ordering = ['-display_date']
         verbose_name = _('Uutiset')
         verbose_name_plural = _('Uutiset')
-        
+
     def __str__(self):
         return self.title
 
