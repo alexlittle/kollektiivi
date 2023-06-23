@@ -1,5 +1,6 @@
 {% extends "base.html" %} 
 {% load i18n %} 
+{% load thumbnail %}
 {% load static %}
 
 {% block extra_head_title %}
@@ -17,13 +18,25 @@
   </ol>
 </nav>
 
+{% if member.photo %}
+<div class="post-image">
+	{% thumbnail member.photo "250x350" format="PNG" padding=False as im %}
+	<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="thumbnail member-image" alt="{{ member.name }}">
+	{% endthumbnail %}
+</div>
+{% endif %}
+
 <h1>{{ member.name }}</h1>
 
 <div class="content-page">
-{% if page.body %}
-	{{ page.body|safe }}
-{% endif %}
-
+	{{ member.body|safe }}
 </div>
+
+{% if member.contact %}
+<h2>{% trans 'Yhteys' %}</h2>
+<div class="content-page">
+	{{ member.contact|safe }}
+</div>
+{% endif %}
 
 {% endblock %}

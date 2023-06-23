@@ -1,21 +1,18 @@
 {% load thumbnail %}
 {% load i18n %} 
 
-<div class="row blog-row">
-<div class="col-sm-2">
-  	{{ post.display_date|date:"d M Y" }}
-  </div>
-  <div class="col-sm-8">
-  	<h3 class="blog"><a href="{% url 'blog:article' post.slug %}">{{ post.title }}</a></h3>
-  	{{ post.body|safe|truncatewords_html:75 }}
-  	<a href="{% url 'blog:article' post.slug %}">{% trans 'Lue lisää' %}</a>
+<div class="post-row">
+	{% if post.image %}
+		{% thumbnail post.image "200x200" format="PNG" padding=True as im %}
+		<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="thumbnail blog-image" alt="{{ post.title }}">
+		{% endthumbnail %}
+  	{% endif %}
   	
-  </div>
-  {% if post.image %}
-	  <div class="col-sm-2 blog-icon">
-  		{% thumbnail post.image "130x130" format="PNG" padding=True as im %}
-	 		<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="thumbnail project-image" alt="{{ post.title }}">
-  		{% endthumbnail %}
-	  </div>
-  {% endif %}
+	<h2 class="blog"><a href="{{ post.slug }}">{{ post.title }}</a> </h2>
+	<div class="post-date">{{ post.display_date|date:"d F Y" }}</div>
+  	<div>
+  		{{ post.body|safe|truncatewords_html:75 }}
+  		<a href="{% url 'blog:article' post.slug %}">{% trans 'Lue lisää' %}</a>
+  	</div>
+  	<div class="clearfix"></div>
 </div>

@@ -1,41 +1,39 @@
 from blog.models import Blog
 from kollektiivi.signals import site_tracker
-from django.shortcuts import render
-from django.core.paginator import Paginator, InvalidPage, EmptyPage
-from django.views.generic import TemplateView
+from django.shortcuts import get_object_or_404
+from django.views.generic import TemplateView, ListView
 
 
-class HomeView(TemplateView):
-    def get(self, request):
+class HomeView(ListView):
+    
+    template_name = 'blog/home.html'
+    paginate_by = 10
+    
+    def get(self, request, *args, **kwargs):
         site_tracker.send(sender=None, request=request)
-        news = Blog.objects.filter(active=True).order_by('-display_date')
-        paginator = Paginator(news, 5)
-
-        try:
-            page = int(request.GET. get('page', '1'))
-        except ValueError:
-            page = 1
-
-        try:
-            news = paginator.page(page)
-        except (EmptyPage, InvalidPage):
-            news = paginator.page(paginator.num_pages)
-
-        return render(request,
-                      'blog/home.html',
-                      {'page': news,
-                       'news_active': True})
-
+        return super().get(request, *args, **kwargs)
+    
+    def get_queryset(self):
+        
+        result_list = Blog.objects.filter(active=True).order_by('-display_date')
+        return result_list
+    
 
 class BlogView(TemplateView):
-    def get(self, request, blog_slug):
+    
+    template_name = 'blog/blog-full-post.html'
+    
+    def get(self, request, *args, **kwargs):
         site_tracker.send(sender=None, request=request)
         preview = request.GET.get("preview", 0)
         if preview == "1":
-            blog = Blog.objects.get(slug=blog_slug)
+            self.object = get_object_or_404(Blog, slug=kwargs['blog_slug'])
         else:
-            blog = Blog.objects.get(slug=blog_slug, active=True)
-        return render(request,
-                      'blog/blog-full-post.html',
-                      {'blog': blog,
-                       'news_active': True})
+            self.object = get_object_or_404(Blog, slug=kwargs['blog_slug'], active=True)
+        return super().get(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['blog'] = self.object
+        return context
+    

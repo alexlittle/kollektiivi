@@ -1,0 +1,21 @@
+{% load thumbnail %}
+{% load i18n %}
+
+<div class="post-card">
+	<a href="{% url 'blog:article' post.slug %}">
+		<div class="post-image">
+		{% if post.image %}
+			{% thumbnail post.image "300x150" format="PNG" padding=True as im %}
+			<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="thumbnail" alt="{{ post.title }}">
+			{% endthumbnail %}
+	  	{% endif %}
+		</div>
+	</a>
+		<div class="post-container">
+			<h3><a href="{% url 'blog:article' post.slug %}">{{ post.title }}</a></h3>
+			<div class="post-date">{{ post.display_date|date:"d F Y" }}</div>
+			<div class="post-card-body">{{ post.body|safe|truncatewords_html:25 }}</div>
+		</div>
+		
+	
+</div> 

@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 
 from kollektiivi.models import Page, Tag, Member
-
+from blog import utils
 
 class HomeView(TemplateView):
 
@@ -10,10 +10,8 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        try:
-            context['page'] = Page.objects.get(slug='etusivu')
-        except Page.NotFoudError:
-            context['page'] = None
+        context['page'] = get_object_or_404(Page, slug='etusivu')
+        context['news'] = utils.get_posts(3)
         return context
 
 

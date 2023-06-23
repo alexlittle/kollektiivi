@@ -16,5 +16,10 @@
 	{{ page.body|safe }}
 {% endif %}
 
-
+<h2>{% trans 'Uutiset' %}</h2>
+<div class="centered">
+	{% for post in news %}
+		{% include "kollektiivi/post-card.html" %}
+	{% endfor %}
+</div>
 {% endblock %}

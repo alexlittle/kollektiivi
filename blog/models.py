@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
 
 from kollektiivi.models import Tracker
 
@@ -14,6 +15,11 @@ class Blog(models.Model):
     image = models.FileField(upload_to="images", blank=True, default=None)
     active = models.BooleanField(default=False)
 
+    class Meta:
+        ordering = ['-display_date']
+        verbose_name = _('Uutiset')
+        verbose_name_plural = _('Uutiset')
+        
     def __str__(self):
         return self.title
 
