@@ -3,7 +3,7 @@
 
 <div class="post-row">
 	{% if post.image %}
-		{% thumbnail post.image "200x200" format="PNG" padding=True as im %}
+		{% thumbnail post.image "200x200" format="PNG" padding=False as im %}
 		<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="thumbnail blog-image" alt="{{ post.title }}">
 		{% endthumbnail %}
   	{% endif %}
