@@ -1,0 +1,18 @@
+{% load thumbnail %}
+{% load i18n %}
+
+<div class="member-card">
+	<a href="{% url 'member_profile' member.slug %}">
+		<div class="member-image">
+		{% if member.photo %}
+			{% thumbnail member.photo "300x150" format="PNG" padding=True as im %}
+			<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="thumbnail" alt="{{ member.name }}">
+			{% endthumbnail %}
+	  	{% endif %}
+		</div>
+	</a>
+		<div class="member-container">
+			<h3><a href="{% url 'member_profile' member.slug %}">{{ member.name}}</a></h3>
+		</div>
+	
+</div> 

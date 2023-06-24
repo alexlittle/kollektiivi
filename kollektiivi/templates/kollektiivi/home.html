@@ -22,4 +22,11 @@
 		{% include "kollektiivi/post-card.html" %}
 	{% endfor %}
 </div>
+
+<h2>{% trans 'Jäseniä' %}</h2>
+<div class="centered">
+	{% for member in members %}
+		{% include "kollektiivi/member-profile-card.html" %}
+	{% endfor %}
+</div>
 {% endblock %}

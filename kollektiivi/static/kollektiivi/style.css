@@ -266,15 +266,16 @@ div.post-date {
 	margin-bottom: 10px;
 }
 
-div.post-card {
+div.post-card, div.member-card {
 	width: 300px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 30px;
     margin-right: 30px;
+    padding-top: 10px;
 }
 
-div.post-container {
+div.post-container, div.member-container {
 	text-align: center;
     padding: 10px 20px;
 }

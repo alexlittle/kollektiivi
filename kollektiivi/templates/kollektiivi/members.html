@@ -18,14 +18,20 @@
 <h1>{% trans 'Jäseniä' %}</h1>
 
 <h2>{% trans 'Nykyiset Jäsenet' %}</h2>
-<div class="content-page">
-{% if page.body %}
-	{{ page.body|safe }}
-{% endif %}
-
-<h2>{% trans 'Aiemmat Jäsenet' %}</h2>
-
+<div class="centered">
+	{% for member in members_current %}
+		{% include "kollektiivi/member-profile-card.html" %}
+	{% endfor %}
 </div>
+
+{% if members_previous %}
+<h2>{% trans 'Aiemmat Jäsenet' %}</h2>
+<div class="centered">
+	{% for member in members_previous %}
+		{% include "kollektiivi/member-profile-card.html" %}
+	{% endfor %}
+</div>
+{% endif %}
 
 
 {% endblock %}

@@ -13,6 +13,7 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['page'] = get_object_or_404(Page, slug='etusivu')
         context['news'] = utils.get_posts(3)
+        context['members'] = Member.objects.filter(active=True)
         return context
 
 
