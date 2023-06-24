@@ -4,11 +4,11 @@ from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from ckeditor.fields import RichTextField
-
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Page(models.Model):
     title = models.CharField(blank=False, max_length=200)
-    body = RichTextField(blank=True, null=True, default=None)
+    body = RichTextUploadingField(blank=True, null=True, default=None)
     slug = models.SlugField()
     menu_order_by = models.IntegerField(default=0)
     on_menu = models.BooleanField(default=False)
@@ -19,8 +19,8 @@ class Page(models.Model):
 
     class Meta:
         ordering = ['menu_order_by', 'title']
-        verbose_name = _('Page')
-        verbose_name_plural = _('Pages')
+        verbose_name = _('Sivu')
+        verbose_name_plural = _('Sivut')
 
     def __str__(self):
         return self.title
@@ -55,7 +55,7 @@ class Tag(models.Model):
 class Member(models.Model):
     name = models.CharField(blank=False, max_length=200)
     strapline = models.CharField(blank=True, null=True, default=None, max_length=200)
-    body = RichTextField(blank=True, null=True, default=None)
+    body = RichTextUploadingField(blank=True, null=True, default=None)
     slug = models.SlugField()
     order_by = models.IntegerField(default=0)
     photo = models.FileField(upload_to="members", blank=True, default=None)

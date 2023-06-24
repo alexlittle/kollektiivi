@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sorl.thumbnail',
     'ckeditor',
+    'ckeditor_uploader',
     'kollektiivi',
     'blog'
 ]
@@ -140,6 +141,11 @@ LANGUAGES = (
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'kollektiivi', 'locale'),
 ]
+
+CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
+CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_RESTRICT_BY_DATE = True
+CKEDITOR_RESTRICT_BY_USER = True
 
 try:
     from config.local_settings import *

@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
@@ -11,7 +11,7 @@ class Blog(models.Model):
     display_date = models.DateTimeField(default=timezone.now)
     title = models.TextField(blank=False)
     slug = models.SlugField(blank=True, default=None)
-    body = RichTextField()
+    body = RichTextUploadingField()
     image = models.FileField(upload_to="images", blank=True, default=None)
     active = models.BooleanField(default=False)
 

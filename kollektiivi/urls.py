@@ -13,6 +13,7 @@ urlpatterns = [
     path('jäseniä/', MembersView.as_view(), name="members"),
     path('jäseniä/<str:slug>/', MemberProfileView.as_view(), name="member_profile"),
     path('uutiset/', include('blog.urls')), 
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('<str:slug>/', PageView.as_view(), name="page"),
 ]
 

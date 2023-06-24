@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-24 13:41+0000\n"
+"POT-Creation-Date: 2023-06-24 16:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,11 +54,11 @@ msgid "Seuraava"
 msgstr ""
 
 #: kollektiivi/models.py:22
-msgid "Page"
+msgid "Sivu"
 msgstr ""
 
 #: kollektiivi/models.py:23
-msgid "Pages"
+msgid "Sivut"
 msgstr ""
 
 #: kollektiivi/models.py:45
@@ -90,11 +90,11 @@ msgstr ""
 msgid "Trackers"
 msgstr ""
 
-#: kollektiivi/settings.py:136
+#: kollektiivi/settings.py:137
 msgid "Finnish"
 msgstr ""
 
-#: kollektiivi/settings.py:137
+#: kollektiivi/settings.py:138
 msgid "English"
 msgstr ""
 
