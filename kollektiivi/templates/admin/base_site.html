@@ -1,0 +1,73 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block extrastyle %}
+<style>
+	#header{
+		background: #ed8c0e;
+		color: #000;}
+
+	#branding h1, #branding h1 a:link, #branding h1 a:visited {
+    	color: #000;
+    }
+    
+	div.breadcrumbs {
+    	background: #efca05;
+    	color: #000;
+    }
+    
+    .module h2, .module caption, .inline-group h2 {
+    	background: #ed8c0e;
+    }
+    
+    a:link, a:visited {
+    	color: #ed8c0e;
+    	text-decoration: none;
+	}
+	
+	a.section:link, a.section:visited {
+		color: #000;
+	}
+
+	#nav-sidebar .current-app .section:link, #nav-sidebar .current-app .section:visited {
+		color: #000;
+	}
+	
+	div.breadcrumbs a {
+		color: #000;
+	}
+	
+	div.breadcrumbs a:hover {
+		color: #333;
+		text-decoration: underline;
+	}
+	
+	#header a:link, #header a:visited, #logout-form button {
+		color: #000;
+	}
+	
+	.button, input[type=submit], input[type=button], .submit-row input, a.button {
+		background-color: #ed8c0e;
+		color: #000;
+	}
+	
+	.button.default, input[type=submit].default, .submit-row input.default {
+		background-color: #ed8c0e;
+		color: #000;
+	}
+</style>
+{% endblock %}
+
+{% block title %}{% trans 'Kollektiivin ylläpito' %}{% endblock %}
+
+{% block branding %}
+
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        {% trans 'Kollektiivin ylläpito' %}
+    </a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
