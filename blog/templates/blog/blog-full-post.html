@@ -19,9 +19,11 @@
 
 <div>
 {% if blog.image %}
+	<a href="{{ blog.image.url }}" data-toggle="lightbox" data-gallery="product-gallery">
   		{% thumbnail blog.image "250x250" format="PNG" padding=True as im %}
 	 		<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="thumbnail blog-image" alt="{{ blog.title }}">
   		{% endthumbnail %}
+  	</a>
   {% endif %}
 	<h1 class="blog">{{ blog.title }}</h1>
 	<div class="post-date">{{ blog.display_date|date:"d F Y" }}</div>

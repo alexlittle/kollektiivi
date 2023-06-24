@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-23 19:44+0000\n"
+"POT-Creation-Date: 2023-06-24 07:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,15 +38,15 @@ msgstr ""
 
 #: blog/templates/blog/blog-row.html:15
 msgid "Lue lisää"
-msgstr "read more"
+msgstr "Read more"
 
-#: blog/templates/blog/pagination.html:9
-msgid "Previous"
-msgstr ""
+#: blog/templates/blog/pagination.html:8
+msgid "Edellinen"
+msgstr "Previous"
 
-#: blog/templates/blog/pagination.html:67
-msgid "Next"
-msgstr ""
+#: blog/templates/blog/pagination.html:66
+msgid "Seuraava"
+msgstr "Next"
 
 #: kollektiivi/models.py:22
 msgid "Page"
