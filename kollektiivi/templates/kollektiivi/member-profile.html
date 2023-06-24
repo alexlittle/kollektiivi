@@ -26,14 +26,20 @@
 </div>
 {% endif %}
 
-<h1>{{ member.name }}</h1>
+<h1 class="member-name">{{ member.name }}</h1>
 
+{% if member.strapline %}
+	<div class="member-strapline">{{ member.strapline }}</div>
+{% endif %}
+
+{% if member.body %}
 <div class="content-page">
 	{{ member.body|safe }}
 </div>
+{% endif %}
 
 {% if member.contact %}
-<h2>{% trans 'Yhteys' %}</h2>
+<h2 class="member-contact">{% trans 'Yhteys' %}</h2>
 <div class="content-page">
 	{{ member.contact|safe }}
 </div>

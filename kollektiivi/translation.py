@@ -15,4 +15,4 @@ class TagTranslationOptions(TranslationOptions):
 
 @register(Member)
 class MemberTranslationOptions(TranslationOptions):
-    fields = ('name', 'body', 'contact')
+    fields = ('name', 'strapline', 'body', 'contact')

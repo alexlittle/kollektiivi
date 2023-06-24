@@ -82,6 +82,9 @@ h1 {
 h2 {
 	color: #000000;
 	font-size: 130%;
+	border-top: 1px solid #efca05;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 h3 {
@@ -248,17 +251,19 @@ img.blog-image, img.member-image {
 	margin-bottom: 20px;
 	margin-left: 20px;
 	float: right;
-	
+	margin-top: 10px;
 }
 
 h2.blog {
 	margin-top:0;
 }
 
+h2.member-contact {
+	border: 0;
+}
+
 div.post-row {
-	padding-bottom: 20px;
-	margin-bottom: 30px;
-	border-bottom: 1px solid #efca05;
+	margin-bottom: 20px;
 }
 
 div.post-date {
@@ -284,4 +289,11 @@ div.post-card-body {
 	text-align: left;
 }
 
+h1.member-name {
+	margin-bottom: 10px;
+}
 
+div.member-strapline {
+	margin-bottom: 20px;
+	font-style: italic;
+}

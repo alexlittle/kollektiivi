@@ -11,8 +11,11 @@
 	  	{% endif %}
 		</div>
 	</a>
-		<div class="member-container">
-			<h3><a href="{% url 'member_profile' member.slug %}">{{ member.name}}</a></h3>
-		</div>
+	<div class="member-container">
+		<h3><a href="{% url 'member_profile' member.slug %}">{{ member.name }}</a></h3>
+		{% if member.strapline %}
+			<div class="member-strapline">{{ member.strapline }}</div>
+		{% endif %}
+	</div>
 	
 </div> 

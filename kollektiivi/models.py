@@ -54,6 +54,7 @@ class Tag(models.Model):
 
 class Member(models.Model):
     name = models.CharField(blank=False, max_length=200)
+    strapline = models.CharField(blank=True, null=True, default=None, max_length=200)
     body = RichTextField(blank=True, null=True, default=None)
     slug = models.SlugField()
     order_by = models.IntegerField(default=0)
