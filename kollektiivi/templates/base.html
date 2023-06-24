@@ -14,6 +14,7 @@
 		  gtag('config', 'G-42CGX4LKEC');
 		</script>
 		
+		<base href="/">
 		<title>
 			{% trans 'Kollektiivi' %} - {% block extra_head_title %}{% endblock extra_head_title %}
 		</title>
@@ -22,20 +23,20 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<meta name="description" content="{% trans 'strapline' %}">
     	<meta name="keywords" content="kollektiivi, joensuu, suomi, paja, finland, osuuskunta, taide">
-    	<meta name="title" content="Alex Little Wood Designs">
-    	<meta name="author" content="Alex Little">
+    	<meta name="title" content="Kollektiivi Joensuu">
+    	<meta name="author" content="Kollektiivi">
     	
 
     	
-    	<link rel="stylesheet" href="{% static 'includes/bootstrap-4.6.2.min.css' %}"/>
+    	<link rel="stylesheet" href="{% static 'includes/bootstrap-4.6.2.min.css' %}" type="text/css"/>
 		<script src="{% static 'includes/jquery-3.5.1.slim.min.js' %}"></script>
 		<script src="{% static 'includes/bootstrap-4.6.2.bundle.min.js' %}"></script>
     
     	<script src="{% static 'includes/ekko-lightbox-5.3.0.min.js' %}"></script>
-    	<link rel="stylesheet" href="{% static 'includes/ekko-lightbox-5.3.0.css' %}"/>
-    	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
-		<link href="{% static "kollektiivi/style.css" %}" rel="stylesheet">
-		<script src="{% static "shop/lightbox.js" %}"></script>
+    	<link rel="stylesheet" href="{% static 'includes/ekko-lightbox-5.3.0.css' %}" type="text/css"/>
+    	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css"> 
+		<link href="{% static "kollektiivi/style.css" %}" rel="stylesheet" type="text/css">
+		<script src="{% static "kollektiivi/lightbox.js" %}"></script>
 		
 		{% block extra_css %}{% endblock extra_css %}
 		{% block extra_js %}{% endblock extra_js %}
@@ -48,8 +49,6 @@
 		<meta name="msapplication-TileColor" content="#da532c">
 		<meta name="theme-color" content="#ffffff">
 		
-		<link rel="icon" type="image/svg+xml" href="{% static 'kollektiivi/favicons/favicon.svg' %}">
-		<link rel="icon" type="image/png" href="{% static 'kollektiivi/favicons/favicon.png' %}">
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url 'blog:feed' %}">
 
 	</head>

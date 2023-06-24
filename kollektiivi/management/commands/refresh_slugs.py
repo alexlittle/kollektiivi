@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
         for p in pages:
             old_slug = p.slug
-            new_slug = slugify(p.title_en)
+            new_slug = slugify(p.title_fi)
             if old_slug != new_slug:
                 p.slug = new_slug
                 p.save()

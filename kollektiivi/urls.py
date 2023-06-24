@@ -12,10 +12,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('jäseniä/', MembersView.as_view(), name="members"),
     path('jäseniä/<str:slug>/', MemberProfileView.as_view(), name="member_profile"),
-    path('uutiset/', include('blog.urls')),
+    path('uutiset/', include('blog.urls')), 
     path('<str:slug>/', PageView.as_view(), name="page"),
-
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

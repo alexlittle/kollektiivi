@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-24 07:10+0000\n"
+"POT-Creation-Date: 2023-06-24 13:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,13 +23,16 @@ msgstr ""
 #: blog/templates/blog/blog-full-post.html:15 blog/templates/blog/home.html:6
 #: blog/templates/blog/home.html:14 blog/templates/blog/home.html:18
 #: kollektiivi/templates/includes/header.html:22
-#: kollektiivi/templates/kollektiivi/home.html:19
+#: kollektiivi/templates/kollektiivi/home.html:47
 msgid "Uutiset"
 msgstr "News"
 
 #: blog/templates/blog/blog-full-post.html:14 blog/templates/blog/home.html:13
-#: kollektiivi/templates/base.html:18
-#: kollektiivi/templates/kollektiivi/home.html:11
+#: kollektiivi/templates/base.html:19
+#: kollektiivi/templates/kollektiivi/home.html:18
+#: kollektiivi/templates/kollektiivi/home.html:20
+#: kollektiivi/templates/kollektiivi/home.html:25
+#: kollektiivi/templates/kollektiivi/home.html:27
 #: kollektiivi/templates/kollektiivi/member-profile.html:14
 #: kollektiivi/templates/kollektiivi/members.html:13
 #: kollektiivi/templates/kollektiivi/page.html:13
@@ -41,10 +44,12 @@ msgid "Lue lisää"
 msgstr "Read more"
 
 #: blog/templates/blog/pagination.html:8
+#: kollektiivi/templates/kollektiivi/home.html:34
 msgid "Edellinen"
 msgstr "Previous"
 
 #: blog/templates/blog/pagination.html:66
+#: kollektiivi/templates/kollektiivi/home.html:38
 msgid "Seuraava"
 msgstr "Next"
 
@@ -64,11 +69,12 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
-#: kollektiivi/models.py:70
+#: kollektiivi/models.py:71
 msgid "Jäsen"
 msgstr "Member"
 
-#: kollektiivi/models.py:71 kollektiivi/templates/includes/header.html:25
+#: kollektiivi/models.py:72 kollektiivi/templates/includes/header.html:25
+#: kollektiivi/templates/kollektiivi/home.html:54
 #: kollektiivi/templates/kollektiivi/member-profile.html:16
 #: kollektiivi/templates/kollektiivi/members.html:6
 #: kollektiivi/templates/kollektiivi/members.html:14
@@ -76,11 +82,11 @@ msgstr "Member"
 msgid "Jäseniä"
 msgstr "Members"
 
-#: kollektiivi/models.py:90
+#: kollektiivi/models.py:91
 msgid "Tracker"
 msgstr ""
 
-#: kollektiivi/models.py:91
+#: kollektiivi/models.py:92
 msgid "Trackers"
 msgstr ""
 
@@ -92,8 +98,19 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: kollektiivi/templates/base.html:23
-#: kollektiivi/templates/kollektiivi/home.html:13
+#: kollektiivi/templates/404.html:5 kollektiivi/templates/404.html:10
+msgid "Sivua ei löydetty"
+msgstr "Page not found"
+
+#: kollektiivi/templates/404.html:11
+msgid "Valitettavasti emme löytäneet etsimääsi sivua."
+msgstr "Sorry, we couldn't find the page you were looking for."
+
+#: kollektiivi/templates/base.html:24
+#: kollektiivi/templates/kollektiivi/home.html:18
+#: kollektiivi/templates/kollektiivi/home.html:21
+#: kollektiivi/templates/kollektiivi/home.html:25
+#: kollektiivi/templates/kollektiivi/home.html:28
 msgid "strapline"
 msgstr "Designed and hand-crafted in Joensuu, Finland"
 
@@ -106,7 +123,7 @@ msgstr "Home"
 msgid "Kaikki jäseniä"
 msgstr "All Members"
 
-#: kollektiivi/templates/kollektiivi/member-profile.html:36
+#: kollektiivi/templates/kollektiivi/member-profile.html:42
 msgid "Yhteys"
 msgstr "Contact"
 
@@ -114,6 +131,6 @@ msgstr "Contact"
 msgid "Nykyiset Jäsenet"
 msgstr "Current members"
 
-#: kollektiivi/templates/kollektiivi/members.html:26
+#: kollektiivi/templates/kollektiivi/members.html:28
 msgid "Aiemmat Jäsenet"
 msgstr "Previous members"

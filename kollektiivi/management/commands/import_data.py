@@ -11,14 +11,8 @@ class Command(BaseCommand):
 
         call_command('loaddata', "tags")
 
-        call_command('loaddata', "tagcategories")
-
-        call_command('loaddata', "categories")
-
         call_command('loaddata', "pages")
 
-        call_command('loaddata', "products")
+        call_command('loaddata', "news")
 
-        call_command('loaddata', "productimages")
-
-        call_command('loaddata', "purchaselinks")
+        call_command('loaddata', "members")
