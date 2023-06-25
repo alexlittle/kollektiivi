@@ -61,6 +61,7 @@ class Member(models.Model):
     order_by = models.IntegerField(default=0)
     photo = models.FileField(upload_to="members", blank=True, default=None)
     active = models.BooleanField(default=False)
+    visible = models.BooleanField(default=False)
     contact = RichTextField(blank=True, null=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

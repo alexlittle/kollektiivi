@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-24 16:36+0000\n"
+"POT-Creation-Date: 2023-06-25 06:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,27 +53,27 @@ msgstr "Previous"
 msgid "Seuraava"
 msgstr "Next"
 
-#: kollektiivi/models.py:22
+#: kollektiivi/models.py:23
 msgid "Sivu"
 msgstr "Page"
 
-#: kollektiivi/models.py:23
+#: kollektiivi/models.py:24
 msgid "Sivut"
 msgstr "Pages"
 
-#: kollektiivi/models.py:45
+#: kollektiivi/models.py:46
 msgid "Tag"
 msgstr ""
 
-#: kollektiivi/models.py:46
+#: kollektiivi/models.py:47
 msgid "Tags"
 msgstr ""
 
-#: kollektiivi/models.py:71
+#: kollektiivi/models.py:73
 msgid "Jäsen"
 msgstr "Member"
 
-#: kollektiivi/models.py:72 kollektiivi/templates/includes/header.html:25
+#: kollektiivi/models.py:74 kollektiivi/templates/includes/header.html:25
 #: kollektiivi/templates/kollektiivi/home.html:54
 #: kollektiivi/templates/kollektiivi/member-profile.html:16
 #: kollektiivi/templates/kollektiivi/members.html:6
@@ -82,11 +82,11 @@ msgstr "Member"
 msgid "Jäseniä"
 msgstr "Members"
 
-#: kollektiivi/models.py:91
+#: kollektiivi/models.py:93
 msgid "Tracker"
 msgstr ""
 
-#: kollektiivi/models.py:92
+#: kollektiivi/models.py:94
 msgid "Trackers"
 msgstr ""
 
@@ -105,6 +105,11 @@ msgstr "Page not found"
 #: kollektiivi/templates/404.html:11
 msgid "Valitettavasti emme löytäneet etsimääsi sivua."
 msgstr "Sorry, we couldn't find the page you were looking for."
+
+#: kollektiivi/templates/admin/base_site.html:62
+#: kollektiivi/templates/admin/base_site.html:68
+msgid "Kollektiivin ylläpito"
+msgstr "Kollektiivi admin"
 
 #: kollektiivi/templates/base.html:24
 #: kollektiivi/templates/kollektiivi/home.html:18

@@ -13,7 +13,7 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['page'] = get_object_or_404(Page, slug='etusivu')
         context['news'] = utils.get_posts(3)
-        context['members'] = Member.objects.filter(active=True)
+        context['members'] = Member.objects.filter(active=True, visible=True)
         return context
 
 
@@ -37,8 +37,8 @@ class MembersView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['members_current'] = Member.objects.filter(active=True)
-        context['members_previous'] = Member.objects.filter(active=False)
+        context['members_current'] = Member.objects.filter(active=True, visible=True)
+        context['members_previous'] = Member.objects.filter(active=False, visible=True)
         return context
 
 
@@ -47,7 +47,7 @@ class MemberProfileView(TemplateView):
     template_name = 'kollektiivi/member-profile.html'
 
     def get(self, request, *args, **kwargs):
-        self.object = get_object_or_404(Member, slug=kwargs['slug'])
+        self.object = get_object_or_404(Member, slug=kwargs['slug'], visible=True)
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):

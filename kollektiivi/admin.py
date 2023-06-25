@@ -13,7 +13,7 @@ class TagAdmin(admin.ModelAdmin):
 
 
 class MemberAdmin(admin.ModelAdmin):
-    list_display = ('name', 'name_en', 'name_fi', 'slug', 'active')
+    list_display = ('name', 'name_en', 'name_fi', 'slug', 'active', 'visible')
 
 
 class TrackerAdmin(admin.ModelAdmin):

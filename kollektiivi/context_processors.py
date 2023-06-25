@@ -5,7 +5,7 @@ from kollektiivi.signals import site_tracker
 
 def get_menu(request):
     menu = Page.objects.filter(on_menu=True, active=True)
-    members = Member.objects.filter(active=True)
+    members = Member.objects.filter(active=True, visible=True)
     return {'MENU_ITEMS': menu,
             'MEMBERS': members}
 
