@@ -1,11 +1,7 @@
-from modeltranslation.translator import translator, TranslationOptions
-from .models import Blog
+from modeltranslation.translator import register, translator, TranslationOptions
+from .models import Post
 
-# for Blog model
-
-
-class BlogTranslationOptions(TranslationOptions):
+@register(Post)
+class PostTranslationOptions(TranslationOptions):
     fields = ('title', 'body')
 
-
-translator.register(Blog, BlogTranslationOptions)

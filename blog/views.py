@@ -1,4 +1,4 @@
-from blog.models import Blog
+from blog.models import Post
 from kollektiivi.signals import site_tracker
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, ListView
@@ -15,21 +15,21 @@ class HomeView(ListView):
 
     def get_queryset(self):
 
-        result_list = Blog.objects.filter(active=True).order_by('-display_date')
+        result_list = Post.objects.filter(active=True).order_by('-display_date')
         return result_list
 
 
-class BlogView(TemplateView):
+class PostView(TemplateView):
 
-    template_name = 'blog/blog-full-post.html'
+    template_name = 'blog/post-full.html'
 
     def get(self, request, *args, **kwargs):
         site_tracker.send(sender=None, request=request)
         preview = request.GET.get("preview", 0)
         if preview == "1":
-            self.object = get_object_or_404(Blog, slug=kwargs['blog_slug'])
+            self.object = get_object_or_404(Post, slug=kwargs['post_slug'])
         else:
-            self.object = get_object_or_404(Blog, slug=kwargs['blog_slug'], active=True)
+            self.object = get_object_or_404(Post, slug=kwargs['post_slug'], active=True)
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):

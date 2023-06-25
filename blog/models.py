@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from kollektiivi.models import Tracker
 
 
-class Blog(models.Model):
+class Post(models.Model):
     display_date = models.DateTimeField(default=timezone.now)
     title = models.TextField(blank=False)
     slug = models.SlugField(blank=True, default=None)
@@ -26,7 +26,7 @@ class Blog(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = slugify(self.title_fi)
-        super(Blog, self).save(*args, **kwargs)
+        super(Post, self).save(*args, **kwargs)
 
     def get_hits(self):
         return Tracker.objects.filter(url__endswith=self.slug).count()

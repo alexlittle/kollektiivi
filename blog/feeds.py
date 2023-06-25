@@ -1,6 +1,6 @@
 from django.contrib.syndication.views import Feed
 from django.urls import reverse
-from blog.models import Blog
+from blog.models import Post
 
 
 class LatestNews(Feed):
@@ -10,7 +10,7 @@ class LatestNews(Feed):
     description = ""
 
     def items(self):
-        return Blog.objects.filter(active=True).order_by('-display_date')[:20]
+        return Post.objects.filter(active=True).order_by('-display_date')[:20]
 
     def item_title(self, item):
         return item.title
@@ -19,4 +19,4 @@ class LatestNews(Feed):
         return item.body
 
     def item_link(self, item):
-        return reverse('blog:article', args={item.slug})
+        return reverse('blog:post', args={item.slug})

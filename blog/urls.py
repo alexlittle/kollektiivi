@@ -8,5 +8,5 @@ app_name = 'blog'
 urlpatterns = [
     path('', blog_views.HomeView.as_view(), name="uutiset"),
     path('feed/', LatestNews(), name="feed"),
-    path('<blog_slug>', blog_views.BlogView.as_view(), name="article")
+    path('<post_slug>', blog_views.PostView.as_view(), name="post")
 ]

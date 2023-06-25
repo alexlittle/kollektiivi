@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-25 06:47+0000\n"
+"POT-Creation-Date: 2023-06-25 10:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,16 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: blog/models.py:20 blog/models.py:21
-#: blog/templates/blog/blog-full-post.html:7
-#: blog/templates/blog/blog-full-post.html:15 blog/templates/blog/home.html:6
+#: blog/models.py:20 blog/models.py:21 blog/templates/blog/home.html:6
 #: blog/templates/blog/home.html:14 blog/templates/blog/home.html:18
+#: blog/templates/blog/post-full.html:7 blog/templates/blog/post-full.html:15
 #: kollektiivi/templates/includes/header.html:22
 #: kollektiivi/templates/kollektiivi/home.html:47
 msgid "Uutiset"
 msgstr ""
 
-#: blog/templates/blog/blog-full-post.html:14 blog/templates/blog/home.html:13
+#: blog/templates/blog/home.html:13 blog/templates/blog/post-full.html:14
 #: kollektiivi/templates/base.html:19
 #: kollektiivi/templates/kollektiivi/home.html:18
 #: kollektiivi/templates/kollektiivi/home.html:20
@@ -39,10 +38,6 @@ msgstr ""
 msgid "Kollektiivi"
 msgstr ""
 
-#: blog/templates/blog/blog-row.html:15
-msgid "Lue lisää"
-msgstr ""
-
 #: blog/templates/blog/pagination.html:8
 #: kollektiivi/templates/kollektiivi/home.html:34
 msgid "Edellinen"
@@ -51,6 +46,10 @@ msgstr ""
 #: blog/templates/blog/pagination.html:66
 #: kollektiivi/templates/kollektiivi/home.html:38
 msgid "Seuraava"
+msgstr ""
+
+#: blog/templates/blog/post-row.html:15
+msgid "Lue lisää"
 msgstr ""
 
 #: kollektiivi/models.py:23

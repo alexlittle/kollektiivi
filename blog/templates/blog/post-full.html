@@ -21,7 +21,7 @@
 {% if blog.image %}
 	<a href="{{ blog.image.url }}" data-toggle="lightbox" data-gallery="product-gallery">
   		{% thumbnail blog.image "250x250" format="PNG" padding=True as im %}
-	 		<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="thumbnail blog-image" alt="{{ blog.title }}">
+	 		<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="thumbnail post-image" alt="{{ blog.title }}">
   		{% endthumbnail %}
   	</a>
   {% endif %}

@@ -19,7 +19,7 @@
 
 {% if page_obj %}
 	{% for post in page_obj %}
-		{% include "blog/blog-row.html" %}
+		{% include "blog/post-row.html" %}
 	{% endfor %}
 	{% include "blog/pagination.html" %}
 {% endif %}
