@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
+
 class Page(models.Model):
     title = models.CharField(blank=False, max_length=200)
     body = RichTextUploadingField(blank=True, null=True, default=None)

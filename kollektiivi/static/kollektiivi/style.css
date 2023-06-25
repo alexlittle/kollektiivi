@@ -285,6 +285,7 @@ div.post-card, div.member-card {
     margin-bottom: 30px;
     margin-right: 30px;
     padding-top: 10px;
+    min-height: 300px;
 }
 
 div.post-container, div.member-container {

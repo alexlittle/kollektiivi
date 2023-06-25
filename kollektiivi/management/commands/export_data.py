@@ -20,11 +20,11 @@ class Command(BaseCommand):
         pages_file = os.path.join(fixture_root, 'pages.json')
         with open(pages_file, 'w') as f:
             call_command('dumpdata', "kollektiivi.page", indent=4, stdout=f)
-        
+
         members_file = os.path.join(fixture_root, 'members.json')
         with open(members_file, 'w') as f:
             call_command('dumpdata', "kollektiivi.member", indent=4, stdout=f)
-               
+
         news_file = os.path.join(fixture_root, 'news.json')
         with open(news_file, 'w') as f:
             call_command('dumpdata', "blog.blog", indent=4, stdout=f)
