@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-25 10:01+0000\n"
+"POT-Creation-Date: 2023-06-26 06:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,10 +131,8 @@ msgstr "All Members"
 msgid "Yhteys"
 msgstr "Contact"
 
-#: kollektiivi/templates/kollektiivi/members.html:20
-msgid "Nykyiset Jäsenet"
-msgstr "Current members"
+#~ msgid "Nykyiset Jäsenet"
+#~ msgstr "Current members"
 
-#: kollektiivi/templates/kollektiivi/members.html:28
-msgid "Aiemmat Jäsenet"
-msgstr "Previous members"
+#~ msgid "Aiemmat Jäsenet"
+#~ msgstr "Previous members"
