@@ -262,6 +262,18 @@ img.post-image, img.member-image {
 	padding: 10px;
 }
 
+div.member-image {
+	margin-bottom: 20px;
+	margin-top: 10px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+img.member-thumbnail-anon {
+	opacity: 0.2;
+}
 
 h2.post {
 	margin-top: 0;

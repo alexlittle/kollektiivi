@@ -9,8 +9,11 @@ from kollektiivi.views import HomeView, PageView, TagView, MembersView, MemberPr
 
 app_name = 'kollektiivi'
 
-urlpatterns = i18n_patterns(
-    path('i18n/', include('django.conf.urls.i18n')),
+urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n'))
+    ]
+
+urlpatterns += i18n_patterns(
     path('', HomeView.as_view(), name="home"),
     path('admin/', admin.site.urls),
     path('jäseniä/', MembersView.as_view(), name="members"),

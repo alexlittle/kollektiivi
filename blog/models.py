@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -14,7 +15,18 @@ class Post(models.Model):
     body = RichTextUploadingField()
     image = models.FileField(upload_to="images", blank=True, default=None)
     active = models.BooleanField(default=False)
-
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                   null=True,
+                                   blank=True,
+                                   default=None,
+                                   on_delete=models.SET_NULL,
+                                   related_name="post_created_by")
+    updated_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                   null=True,
+                                   blank=True,
+                                   default=None,
+                                   on_delete=models.SET_NULL,
+                                   related_name="post_updated_by")
     class Meta:
         ordering = ['-display_date']
         verbose_name = _('Uutiset')

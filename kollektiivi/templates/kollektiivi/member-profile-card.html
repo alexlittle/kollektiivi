@@ -1,13 +1,16 @@
 {% load thumbnail %}
+{% load static %}
 {% load i18n %}
 
 <div class="member-card">
 	<a href="{% url 'member_profile' member.slug %}">
 		<div class="member-image">
 		{% if member.photo %}
-			{% thumbnail member.photo "300x150" format="PNG" padding=True as im %}
-			<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="thumbnail" alt="{{ member.name }}">
+			{% thumbnail member.photo "150x150" format="PNG" padding=True as im %}
+			<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ member.name }}">
 			{% endthumbnail %}
+		{% else %}
+			<img src="{% static 'kollektiivi/images/anon-150.png' %}" width="150" height="150" class="member-thumbnail-anon" alt="{{ member.name }}">
 	  	{% endif %}
 		</div>
 	</a>

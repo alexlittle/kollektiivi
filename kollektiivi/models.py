@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
@@ -17,7 +18,18 @@ class Page(models.Model):
     active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                   null=True,
+                                   blank=True,
+                                   default=None,
+                                   on_delete=models.SET_NULL,
+                                   related_name="page_created_by")
+    updated_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                   null=True,
+                                   blank=True,
+                                   default=None,
+                                   on_delete=models.SET_NULL,
+                                   related_name="page_updated_by")
     class Meta:
         ordering = ['menu_order_by', 'title']
         verbose_name = _('Sivu')
@@ -65,6 +77,18 @@ class Member(models.Model):
     contact = RichTextField(blank=True, null=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                   null=True,
+                                   blank=True,
+                                   default=None,
+                                   on_delete=models.SET_NULL,
+                                   related_name="member_created_by")
+    updated_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                   null=True,
+                                   blank=True,
+                                   default=None,
+                                   on_delete=models.SET_NULL,
+                                   related_name="member_updated_by")
 
     def __str__(self):
         return self.name
