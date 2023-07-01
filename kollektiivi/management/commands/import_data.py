@@ -9,10 +9,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        call_command('loaddata', "tags")
+        #call_command('loaddata', "tags")
 
-        call_command('loaddata', "pages")
+        #call_command('loaddata', "pages")
 
-        call_command('loaddata', "news")
+        #call_command('loaddata', "post")
 
         call_command('loaddata', "members")
