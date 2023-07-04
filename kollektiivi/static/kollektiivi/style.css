@@ -36,6 +36,10 @@ body {
 	padding: 5px 20px 3px 10px;
 }
 
+.navbar-nav {
+    z-index: 100;
+}
+
 .navbar-light .navbar-nav > .nav-item > a:focus, 
 .navbar-light .navbar-nav > .nav-item > a:hover 
 {
@@ -131,7 +135,7 @@ div.banner-stripe-2 {
 	height: 3px;
 }
 
-.footer {
+.page-footer {
   bottom: 0;
   width: 100%;
   padding-top: 1px;
@@ -143,6 +147,10 @@ div.banner-stripe-2 {
 	float: none;
 	content: "";
   	display: table;
+}
+
+.container {
+	margin-bottom: 40px;
 }
 
 h1.brand {

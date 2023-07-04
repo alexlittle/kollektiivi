@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 06:31+0000\n"
+"POT-Creation-Date: 2023-07-04 18:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: blog/models.py:20 blog/models.py:21 blog/templates/blog/home.html:6
+#: blog/models.py:32 blog/models.py:33 blog/templates/blog/home.html:6
 #: blog/templates/blog/home.html:14 blog/templates/blog/home.html:18
 #: blog/templates/blog/post-full.html:7 blog/templates/blog/post-full.html:15
 #: kollektiivi/templates/includes/header.html:22
@@ -34,7 +34,7 @@ msgstr ""
 #: kollektiivi/templates/kollektiivi/home.html:27
 #: kollektiivi/templates/kollektiivi/member-profile.html:14
 #: kollektiivi/templates/kollektiivi/members.html:13
-#: kollektiivi/templates/kollektiivi/page.html:13
+#: kollektiivi/templates/kollektiivi/page.html:27
 msgid "Kollektiivi"
 msgstr ""
 
@@ -52,27 +52,27 @@ msgstr ""
 msgid "Lue lisää"
 msgstr ""
 
-#: kollektiivi/models.py:23
+#: kollektiivi/models.py:35
 msgid "Sivu"
 msgstr ""
 
-#: kollektiivi/models.py:24
+#: kollektiivi/models.py:36
 msgid "Sivut"
 msgstr ""
 
-#: kollektiivi/models.py:46
+#: kollektiivi/models.py:58
 msgid "Tag"
 msgstr ""
 
-#: kollektiivi/models.py:47
+#: kollektiivi/models.py:59
 msgid "Tags"
 msgstr ""
 
-#: kollektiivi/models.py:73
+#: kollektiivi/models.py:97
 msgid "Jäsen"
 msgstr ""
 
-#: kollektiivi/models.py:74 kollektiivi/templates/includes/header.html:25
+#: kollektiivi/models.py:98 kollektiivi/templates/includes/header.html:25
 #: kollektiivi/templates/kollektiivi/home.html:54
 #: kollektiivi/templates/kollektiivi/member-profile.html:16
 #: kollektiivi/templates/kollektiivi/members.html:6
@@ -81,11 +81,11 @@ msgstr ""
 msgid "Jäseniä"
 msgstr ""
 
-#: kollektiivi/models.py:93
+#: kollektiivi/models.py:117
 msgid "Tracker"
 msgstr ""
 
-#: kollektiivi/models.py:94
+#: kollektiivi/models.py:118
 msgid "Trackers"
 msgstr ""
 
@@ -118,6 +118,14 @@ msgstr ""
 msgid "strapline"
 msgstr "Suunniteltu ja valmistettu käsin Joensuussa"
 
+#: kollektiivi/templates/includes/footer.html:19
+msgid "Sähkoposti:"
+msgstr ""
+
+#: kollektiivi/templates/includes/footer.html:20
+msgid "Sortavalankatu 2, 80100 Joensuu"
+msgstr ""
+
 #: kollektiivi/templates/includes/header.html:19
 #: kollektiivi/templates/kollektiivi/home.html:6
 msgid "Etusivu"
@@ -127,6 +135,6 @@ msgstr ""
 msgid "Kaikki jäseniä"
 msgstr ""
 
-#: kollektiivi/templates/kollektiivi/member-profile.html:42
+#: kollektiivi/templates/kollektiivi/member-profile.html:44
 msgid "Yhteys"
 msgstr ""

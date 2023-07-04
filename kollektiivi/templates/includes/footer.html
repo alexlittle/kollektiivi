@@ -1,18 +1,29 @@
+{% load i18n %}
 <div class="clearfix"></div>
-<footer class="footer">
-	  <div class="banner-stripe-2"></div>
-	  <div class="banner-stripe-1"></div>
-	  <div class="banner"></div>
-      <div class="container">
-      	<ul class="list-unstyled"> 
-			{% for item in FOOTER_ITEMS %}
-      		<li>
-        		<a href='/{{ item.slug }}'>{{ item.title }}</a>
-      		</li>
-      	{% endfor %}
-        </ul>
-      </div>
-  	<div class="footer-copyright text-center py-3">&copy; {% now "Y" %} Copyright 
-    <a href="/"> Kollektiivi</a>
-  </div>
+<div class="banner-stripe-2"></div>
+<div class="banner-stripe-1"></div>
+<div class="banner"></div>
+
+<footer class="page-footer">
+    <div class="container text-center text-md-left">
+      	<div class="row">
+      		<div class="col-md-6 mt-md-0 mt-3">
+      			<ul class="list-unstyled"> 
+	      			{% for item in FOOTER_ITEMS %}
+			      		<li>
+			        		<a href='/{{ item.slug }}'>{{ item.title }}</a>
+			      		</li>
+			      	{% endfor %}
+      			</ul>
+		      	<ul class="list-unstyled"> 
+		      		<li>{% trans "Sähkoposti:" %} <a href="mailto:info@kollektiivi.org">info@kollektiivi.org</a></li>
+		      		<li>{% trans "Sortavalankatu 2, 80100 Joensuu" %}</li>
+					
+		        </ul>
+			</div>
+			<div class="col-md-6 mb-md-0 mb-6 text-right">
+			 	&copy; {% now "Y" %} Copyright <a href="/"> Kollektiivi</a>
+	  		</div>
+	  	</div>
+ 	 </div>
 </footer>  
