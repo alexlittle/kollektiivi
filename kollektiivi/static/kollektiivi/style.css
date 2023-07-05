@@ -327,3 +327,14 @@ div.member-strapline {
 	margin-bottom: 20px;
 	font-style: italic;
 }
+
+.carousel-item img {
+    display: block;
+    margin: auto;
+}
+
+.carousel-caption {
+	background-color: #66666680;
+}
+
+
