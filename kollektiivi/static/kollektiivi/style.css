@@ -135,6 +135,10 @@ div.banner-stripe-2 {
 	height: 3px;
 }
 
+.page-footer-spacer {
+	margin-top: 50px;
+}
+
 .page-footer {
   bottom: 0;
   width: 100%;
@@ -150,7 +154,7 @@ div.banner-stripe-2 {
 }
 
 .container {
-	margin-bottom: 40px;
+	margin-bottom: 10px;
 }
 
 h1.brand {
@@ -268,6 +272,14 @@ img.post-image, img.member-image {
 	float: right;
 	margin-top: 10px;
 	padding: 10px;
+}
+
+img.page-image {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin-bottom: 20px;
+	margin-left: 20px;
+	float: right;
+	margin-top: 10px;
 }
 
 div.member-image {

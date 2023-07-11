@@ -147,6 +147,12 @@ CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_RESTRICT_BY_DATE = True
 CKEDITOR_RESTRICT_BY_USER = True
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}
+
 try:
     from config.local_settings import *
 except ImportError:

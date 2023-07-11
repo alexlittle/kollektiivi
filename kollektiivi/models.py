@@ -13,6 +13,7 @@ class Page(models.Model):
     body = RichTextUploadingField(blank=True, null=True, default=None)
     slug = models.SlugField()
     menu_order_by = models.IntegerField(default=0)
+    image = models.FileField(upload_to="pages", blank=True, default=None)
     on_menu = models.BooleanField(default=False)
     on_footer = models.BooleanField(default=False)
     active = models.BooleanField(default=False)

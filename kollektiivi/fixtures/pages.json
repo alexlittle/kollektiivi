@@ -6,18 +6,19 @@
         "title": "Etusivu",
         "title_fi": "Etusivu",
         "title_en": "Home",
-        "body": "<p>This is some text that will appear on the homepage (in Finnish)</p>",
-        "body_fi": "<p>This is some text that will appear on the homepage (in Finnish)</p>",
-        "body_en": "<p>This is some text that will appear on the homepage (in English)</p>",
+        "body": "<p>Kollektiivi - askartelu-, taide- ja ty&ouml;tila Joensuun keskustassa</p>\r\n\r\n<p>Olemme joukko k&auml;sity&ouml;l&auml;isi&auml; ja taiteilijoita, jotka tekev&auml;t sepp&auml;ty&ouml;t&auml;, maalausta, keramiikkaa, puut&ouml;it&auml;, koruja ja paljon muuta</p>\r\n\r\n<p>Jos etsit studio- tai ty&ouml;tilatilaa pienelle yrityksellesi tai harrastuksellesi, <a href=\"/yhtya\">tule mukaan</a>!</p>",
+        "body_fi": "<p>Kollektiivi - askartelu-, taide- ja ty&ouml;tila Joensuun keskustassa</p>\r\n\r\n<p>Olemme joukko k&auml;sity&ouml;l&auml;isi&auml; ja taiteilijoita, jotka tekev&auml;t sepp&auml;ty&ouml;t&auml;, maalausta, keramiikkaa, puut&ouml;it&auml;, koruja ja paljon muuta</p>\r\n\r\n<p>Jos etsit studio- tai ty&ouml;tilatilaa pienelle yrityksellesi tai harrastuksellesi, <a href=\"/yhtya\">tule mukaan</a>!</p>",
+        "body_en": "<p>Kollektiivi - craft, art and co-working space in the centre of Joensuu</p>\r\n\r\n<p>We&#39;re a group of crafts people and artists doing blacksmithing, painting, ceramics, woodwork, jewellry making and more</p>\r\n\r\n<p>If you&#39;re looking for studio or co-working space for your small business or hobby then please <a href=\"/yhtya\">join us</a>!</p>",
         "slug": "etusivu",
         "menu_order_by": 0,
+        "image": "",
         "on_menu": false,
         "on_footer": false,
         "active": true,
         "created_at": "2023-06-21T20:27:22.550Z",
-        "updated_at": "2023-06-24T07:43:12.110Z",
-        "created_by": null,
-        "updated_by": null
+        "updated_at": "2023-07-11T06:44:47.116Z",
+        "created_by": 1,
+        "updated_by": 1
     }
 },
 {
@@ -31,14 +32,15 @@
         "body_fi": null,
         "body_en": null,
         "slug": "minusta",
-        "menu_order_by": 0,
+        "menu_order_by": 2,
+        "image": "",
         "on_menu": true,
-        "on_footer": false,
+        "on_footer": true,
         "active": true,
         "created_at": "2023-06-22T19:03:58.032Z",
-        "updated_at": "2023-06-22T19:04:22.621Z",
-        "created_by": null,
-        "updated_by": null
+        "updated_at": "2023-07-04T19:56:31.239Z",
+        "created_by": 1,
+        "updated_by": 1
     }
 },
 {
@@ -48,18 +50,41 @@
         "title": "Yhteys",
         "title_fi": "Yhteys",
         "title_en": "Contact",
-        "body": null,
-        "body_fi": null,
-        "body_en": null,
+        "body": "<p>Haluatko tiet&auml;&auml; meist&auml; lis&auml;&auml;? Kiinnostaako liitty&auml; meihin?</p>\r\n\r\n<p>Ota sitten yhteytt&auml; osoitteeseen:<br />\r\n<a href=\"mailto:info@kollektiivi.org\">info@kollektiivi.org </a>(suomeksi tai englanniksi)<br />\r\nXXXX - 0000000000 (suomi)<br />\r\nAlex - 0456402013 (englanniksi)</p>\r\n\r\n<p>L&ouml;yd&auml;mme meid&auml;t osoitteesta Sortavalankatu 2, 80100 Joensuu</p>",
+        "body_fi": "<p>Haluatko tiet&auml;&auml; meist&auml; lis&auml;&auml;? Kiinnostaako liitty&auml; meihin?</p>\r\n\r\n<p>Ota sitten yhteytt&auml; osoitteeseen:<br />\r\n<a href=\"mailto:info@kollektiivi.org\">info@kollektiivi.org </a>(suomeksi tai englanniksi)<br />\r\nXXXX - 0000000000 (suomi)<br />\r\nAlex - 0456402013 (englanniksi)</p>\r\n\r\n<p>L&ouml;yd&auml;mme meid&auml;t osoitteesta Sortavalankatu 2, 80100 Joensuu</p>",
+        "body_en": "<p>Want to know more about us? Interested in joining us?</p>\r\n\r\n<p>Then please contact us at:&nbsp;<br />\r\n<a href=\"mailto:info@kollektiivi.org\">info@kollektiivi.org</a> (Finnish or English)&nbsp;<br />\r\nXXXX - 0000000000 (Finnish)<br />\r\nAlex - 0456402013 (English)</p>\r\n\r\n<p>We can be found at Sortavalankatu 2, 80100 Joensuu</p>",
         "slug": "yhteys",
-        "menu_order_by": 0,
+        "menu_order_by": 3,
+        "image": "",
         "on_menu": true,
-        "on_footer": false,
+        "on_footer": true,
         "active": true,
         "created_at": "2023-06-23T08:45:19.993Z",
-        "updated_at": "2023-06-23T08:45:19.993Z",
-        "created_by": null,
-        "updated_by": null
+        "updated_at": "2023-07-11T06:47:40.480Z",
+        "created_by": 1,
+        "updated_by": 1
+    }
+},
+{
+    "model": "kollektiivi.page",
+    "pk": 4,
+    "fields": {
+        "title": "Yhtyä",
+        "title_fi": "Yhtyä",
+        "title_en": "Join Us",
+        "body": "<p>Kiinnostaako tila harjoitella k&auml;sity&ouml;t&auml;si tai taidettasi? Tai etsitk&ouml; ty&ouml;tilaa?</p>\r\n\r\n<p>Ota sitten <a href=\"/yhteys/\">yhteytt&auml;</a> keskustellaksesi tai sopiaksesi vierailusta.</p>\r\n\r\n<p>Mit&auml; voimme tarjota:</p>\r\n\r\n<ul>\r\n\t<li>Kiinte&auml; kuukausimaksu (sis. s&auml;hk&ouml;n)</li>\r\n\t<li>Lyhyt tai pitk&auml; j&auml;senyys</li>\r\n\t<li>24 x 7 p&auml;&auml;sy</li>\r\n\t<li>Keitti&ouml; ja yhteistilat (j&auml;&auml;kaappi, mikroaaltouuni, uuni jne.)</li>\r\n\t<li>Ty&ouml;skentele samanhenkisten ihmisten kanssa!</li>\r\n</ul>",
+        "body_fi": "<p>Kiinnostaako tila harjoitella k&auml;sity&ouml;t&auml;si tai taidettasi? Tai etsitk&ouml; ty&ouml;tilaa?</p>\r\n\r\n<p>Ota sitten <a href=\"/yhteys/\">yhteytt&auml;</a> keskustellaksesi tai sopiaksesi vierailusta.</p>\r\n\r\n<p>Mit&auml; voimme tarjota:</p>\r\n\r\n<ul>\r\n\t<li>Kiinte&auml; kuukausimaksu (sis. s&auml;hk&ouml;n)</li>\r\n\t<li>Lyhyt tai pitk&auml; j&auml;senyys</li>\r\n\t<li>24 x 7 p&auml;&auml;sy</li>\r\n\t<li>Keitti&ouml; ja yhteistilat (j&auml;&auml;kaappi, mikroaaltouuni, uuni jne.)</li>\r\n\t<li>Ty&ouml;skentele samanhenkisten ihmisten kanssa!</li>\r\n</ul>",
+        "body_en": "<p>Interested in having space to practice your craft or art? Or looking for co-working space?</p>\r\n\r\n<p>Then please <a href=\"/yhteys/\">contact us</a> to discuss or arrange a visit.</p>\r\n\r\n<p>What we can offer:</p>\r\n\r\n<ul>\r\n\t<li>Fixed monthly fee (including electricity)</li>\r\n\t<li>Short or long term membership</li>\r\n\t<li>24 x 7 access</li>\r\n\t<li>Kitchen and shared space facilities (fridge, microwave, oven etc)</li>\r\n\t<li>Work alongside like-minded people!</li>\r\n</ul>",
+        "slug": "yhtya",
+        "menu_order_by": 1,
+        "image": "",
+        "on_menu": true,
+        "on_footer": true,
+        "active": true,
+        "created_at": "2023-07-04T14:45:05.535Z",
+        "updated_at": "2023-07-11T07:15:34.306Z",
+        "created_by": 1,
+        "updated_by": 1
     }
 }
 ]
