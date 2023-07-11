@@ -22,10 +22,10 @@ class Command(BaseCommand):
             call_command('loaddata', "tags")
 
         if models == "all" or models == "pages":
-        call_command('loaddata', "pages")
+            call_command('loaddata', "pages")
 
         if models == "all" or models == "news":
-        call_command('loaddata', "news")
+            call_command('loaddata', "news")
 
         if models == "all" or models == "members":
-        call_command('loaddata', "members")
+            call_command('loaddata', "members")
