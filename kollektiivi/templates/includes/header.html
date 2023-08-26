@@ -24,7 +24,7 @@
       	<li class="nav-item dropdown">
         	<a class="nav-link dropdown-toggle" href="#" id="membersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans 'Jäseniä' %}</a>
         	<div class="dropdown-menu" aria-labelledby="membersDropdown">
-	          <a class="dropdown-item" href="{% url 'members' %}">{% trans 'Kaikki jäseniä' %}</a>
+	          <a class="dropdown-item" href="{% url 'members' %}">{% trans 'Jäseniä' %}</a>
 	          <div class="dropdown-divider"></div>
 	          {% for member in MEMBERS %}
 	          	<a class="dropdown-item" href="{% url 'member_profile' member.slug %}">{{ member.name }}</a>
