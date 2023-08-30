@@ -11,7 +11,7 @@ from kollektiivi.models import Tracker
 class Post(models.Model):
     display_date = models.DateTimeField(default=timezone.now)
     title = models.TextField(blank=False)
-    slug = models.SlugField(blank=True, default=None)
+    slug = models.SlugField(blank=True, default=None, max_length=200)
     body = RichTextUploadingField()
     image = models.FileField(upload_to="images", blank=True, default=None)
     active = models.BooleanField(default=False)
