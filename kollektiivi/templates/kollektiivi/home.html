@@ -2,6 +2,16 @@
 {% load i18n %} 
 {% load static %}
 
+{% block social_media %}
+<meta property="og:title" content="Kollektiivi Joensuu" />
+<meta property="og:description" content="{{ page.body|striptags }}" />
+<meta property="og:image" content="https://kollektiivi.org/kollektiivi/images/kollektiivi-logo-50px.png">
+<meta property="og:url" content="https://kollektiivi.org/"/>
+<meta property="og:image:type" content="image/png">
+<meta property="og:type" content="website" />
+{% endblock social_media %}
+
+
 {% block extra_head_title %}
 	{% trans 'Etusivu' %}
 {% endblock extra_head_title %}

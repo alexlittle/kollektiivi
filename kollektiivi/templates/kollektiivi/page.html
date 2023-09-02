@@ -3,6 +3,15 @@
 {% load thumbnail %}
 {% load static %}
 
+{% block social_media %}
+<meta property="og:title" content="Kollektiivi Joensuu - {{ page.title }}" />
+<meta property="og:description" content="{{ page.body|striptags|truncatewords:75 }}" />
+<meta property="og:image" content="https://kollektiivi.org/kollektiivi/images/kollektiivi-logo-50px.png">
+<meta property="og:url" content="https://kollektiivi.org{{ page.slug }}"/>
+<meta property="og:image:type" content="image/png">
+<meta property="og:type" content="website" />
+{% endblock social_media %}
+
 {% block extra_head_title %}
 	{{ page.title }}
 {% endblock extra_head_title %}

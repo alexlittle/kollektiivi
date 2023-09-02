@@ -26,8 +26,6 @@
     	<meta name="title" content="Kollektiivi Joensuu">
     	<meta name="author" content="Kollektiivi">
     	
-
-    	
     	<link rel="stylesheet" href="{% static 'includes/bootstrap-4.6.2.min.css' %}" type="text/css"/>
 		<script src="{% static 'includes/jquery-3.5.1.slim.min.js' %}"></script>
 		<script src="{% static 'includes/bootstrap-4.6.2.bundle.min.js' %}"></script>
@@ -50,6 +48,10 @@
 		<meta name="theme-color" content="#ffffff">
 		
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url 'blog:feed' %}">
+		
+		
+		{% block social_media %}
+		{% endblock social_media %}
 
 	</head>
 	<body>

@@ -3,6 +3,20 @@
 {% load thumbnail %}
 {% load static %}
 
+{% block social_media %}
+<meta property="og:title" content="Kollektiivi Joensuu - {{ member.name }}" />
+<meta property="og:description" content="{{ member.strapline }} - {{ member.body|striptags|truncatewords:75 }}" />
+{% if member.photo %}
+		<meta property="og:image" content="https://kollektiivi.org{{ member.photo.url }}">
+{% else %}
+		<meta property="og:image" content="https://kollektiivi.org/kollektiivi/images/kollektiivi-logo-50px.png">
+{% endif %}
+
+<meta property="og:url" content="https://kollektiivi.org{% url 'member_profile' member.slug %}"/>
+<meta property="og:image:type" content="image/png">
+<meta property="og:type" content="website" />
+{% endblock social_media %}
+
 {% block extra_head_title %}
 	{{ member.name }}
 {% endblock extra_head_title %}
