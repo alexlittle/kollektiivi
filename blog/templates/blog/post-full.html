@@ -3,6 +3,19 @@
 {% load static %}
 {% load thumbnail %}
 
+{% block social_media %}
+<meta property="og:title" content="Kollektiivi Joensuu - {{ blog.title }}" />
+<meta property="og:description" content="{{ blog.body|striptags|truncatewords:75 }}" />
+{% if blog.image %}
+	<meta property="og:image" content="https://kollektiivi.org{{ blog.image.url }}">
+{% else %}
+	<meta property="og:image" content="https://kollektiivi.org/static/kollektiivi/images/kollektiivi.png">
+{% endif %}
+<meta property="og:url" content="https://kollektiivi.org{% url 'blog:post' blog.slug %}"/>
+<meta property="og:image:type" content="image/png">
+<meta property="og:type" content="website" />
+{% endblock social_media %}
+
 {% block extra_head_title %}
 	{% trans 'Uutiset' %} - {{ blog.title }}
 {% endblock extra_head_title %}

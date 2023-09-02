@@ -5,11 +5,13 @@
 
 {% block social_media %}
 <meta property="og:title" content="Kollektiivi Joensuu - {{ member.name }}" />
+{% if member.strapline and member.body %}
 <meta property="og:description" content="{{ member.strapline }} - {{ member.body|striptags|truncatewords:75 }}" />
+{% endif %}
 {% if member.photo %}
 		<meta property="og:image" content="https://kollektiivi.org{{ member.photo.url }}">
 {% else %}
-		<meta property="og:image" content="https://kollektiivi.org/kollektiivi/images/kollektiivi.png">
+		<meta property="og:image" content="https://kollektiivi.org/static/kollektiivi/images/kollektiivi.png">
 {% endif %}
 
 <meta property="og:url" content="https://kollektiivi.org{% url 'member_profile' member.slug %}"/>
