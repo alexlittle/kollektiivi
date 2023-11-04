@@ -131,6 +131,7 @@ MEDIA_ROOT = BASE_DIR.parent / 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SESSION_COOKIE_NAME = "kollektiivi"
 
 gettext = lambda s: s
 LANGUAGES = (
