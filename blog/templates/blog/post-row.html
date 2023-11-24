@@ -12,7 +12,16 @@
 	<div class="post-date">{{ post.display_date|date:"j F Y" }}</div>
   	<div>
   		{{ post.body|safe|truncatewords_html:75 }}
-  		<a href="{% url 'blog:post' post.slug %}">{% trans 'Lue lisää' %}</a>
+
+		{% if post.postattachment_set %}
+			<ul class="news-attachments">
+			{% for pa in post.postattachment_set.all %}
+				<li><a target="_blank" href="{{ pa.file.url }}">{{ pa.title }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+
+		<a href="{% url 'blog:post' post.slug %}">{% trans 'Lue lisää' %}</a>
   	</div>
   	<div class="clearfix"></div>
 </div>

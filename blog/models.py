@@ -42,3 +42,13 @@ class Post(models.Model):
 
     def get_hits(self):
         return Tracker.objects.filter(url__endswith=self.slug).count()
+
+class PostAttachment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, default=None)
+    file = models.FileField(upload_to="post_files", blank=False)
+    title = models.TextField(blank=False)
+    order_by = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name = _('Post Attachment')
+        verbose_name_plural = _('Post Attachments')

@@ -43,6 +43,15 @@
   	<div>
   		{{ blog.body|safe }}
   	</div>
+
+	{% if blog.postattachment_set %}
+		<ul class="news-attachments">
+		{% for pa in blog.postattachment_set.all %}
+			<li><a target="_blank" href="{{ pa.file.url }}">{{ pa.title }}</a></li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+
   	<div class="clearfix"></div>
 </div>
   	
