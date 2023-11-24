@@ -13,7 +13,7 @@
 	</a>
 	<div class="post-container">
 		<h3><a href="{% url 'blog:post' post.slug %}">{{ post.title }}</a></h3>
-		<div class="post-date">{{ post.display_date|date:"d F Y" }}</div>
+		<div class="post-date">{{ post.display_date|date:"j F Y" }}</div>
 		<div class="post-card-body">{{ post.body|safe|truncatewords_html:25 }}</div>
 	</div>
 </div> 
