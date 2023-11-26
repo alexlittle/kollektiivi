@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-05 11:16+0000\n"
+"POT-Creation-Date: 2023-11-26 07:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,81 +19,96 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: blog/models.py:32 blog/models.py:33 blog/templates/blog/home.html:6
-#: blog/templates/blog/home.html:14 blog/templates/blog/home.html:18
-#: blog/templates/blog/post-full.html:7 blog/templates/blog/post-full.html:15
+#: blog/templates/blog/home.html:14 blog/templates/blog/home.html:22
+#: blog/templates/blog/home.html:26 blog/templates/blog/post-full.html:20
+#: blog/templates/blog/post-full.html:28
 #: kollektiivi/templates/includes/header.html:22
-#: kollektiivi/templates/kollektiivi/home.html:59
+#: kollektiivi/templates/kollektiivi/home.html:69
 msgid "Uutiset"
 msgstr ""
 
-#: blog/templates/blog/home.html:13 blog/templates/blog/post-full.html:14
+#: blog/models.py:53
+msgid "Post Attachment"
+msgstr ""
+
+#: blog/models.py:54
+msgid "Post Attachments"
+msgstr ""
+
+#: blog/templates/blog/home.html:21 blog/templates/blog/post-full.html:27
 #: kollektiivi/templates/base.html:19
-#: kollektiivi/templates/kollektiivi/home.html:20
-#: kollektiivi/templates/kollektiivi/home.html:26
-#: kollektiivi/templates/kollektiivi/home.html:32
-#: kollektiivi/templates/kollektiivi/home.html:38
-#: kollektiivi/templates/kollektiivi/member-profile.html:14
-#: kollektiivi/templates/kollektiivi/members.html:13
-#: kollektiivi/templates/kollektiivi/page.html:27
+#: kollektiivi/templates/kollektiivi/home.html:30
+#: kollektiivi/templates/kollektiivi/home.html:36
+#: kollektiivi/templates/kollektiivi/home.html:42
+#: kollektiivi/templates/kollektiivi/home.html:48
+#: kollektiivi/templates/kollektiivi/member-profile.html:30
+#: kollektiivi/templates/kollektiivi/members.html:22
+#: kollektiivi/templates/kollektiivi/page.html:37
 msgid "Kollektiivi"
 msgstr ""
 
 #: blog/templates/blog/pagination.html:8
-#: kollektiivi/templates/kollektiivi/home.html:46
+#: kollektiivi/templates/kollektiivi/home.html:56
 msgid "Edellinen"
 msgstr ""
 
 #: blog/templates/blog/pagination.html:66
-#: kollektiivi/templates/kollektiivi/home.html:50
+#: kollektiivi/templates/kollektiivi/home.html:60
 msgid "Seuraava"
 msgstr ""
 
-#: blog/templates/blog/post-row.html:15
+#: blog/templates/blog/post-full.html:48 blog/templates/blog/post-row.html:17
+msgid "Attachments"
+msgstr "Liitteitä"
+
+#: blog/templates/blog/post-row.html:25
 msgid "Lue lisää"
 msgstr ""
 
-#: kollektiivi/models.py:35
+#: kollektiivi/models.py:36
 msgid "Sivu"
 msgstr ""
 
-#: kollektiivi/models.py:36
+#: kollektiivi/models.py:37
 msgid "Sivut"
 msgstr ""
 
-#: kollektiivi/models.py:58
+#: kollektiivi/models.py:59
 msgid "Tag"
 msgstr ""
 
-#: kollektiivi/models.py:59
+#: kollektiivi/models.py:60
 msgid "Tags"
 msgstr ""
 
-#: kollektiivi/models.py:97
+#: kollektiivi/models.py:98
 msgid "Jäsen"
 msgstr ""
 
-#: kollektiivi/models.py:98 kollektiivi/templates/includes/header.html:25
-#: kollektiivi/templates/kollektiivi/home.html:66
-#: kollektiivi/templates/kollektiivi/member-profile.html:16
-#: kollektiivi/templates/kollektiivi/members.html:6
-#: kollektiivi/templates/kollektiivi/members.html:14
-#: kollektiivi/templates/kollektiivi/members.html:18
+#: kollektiivi/models.py:99 kollektiivi/templates/includes/header.html:25
+#: kollektiivi/templates/includes/header.html:27
+#: kollektiivi/templates/kollektiivi/home.html:76
+#: kollektiivi/templates/kollektiivi/member-profile.html:32
+#: kollektiivi/templates/kollektiivi/members.html:7
+#: kollektiivi/templates/kollektiivi/members.html:15
+#: kollektiivi/templates/kollektiivi/members.html:23
+#: kollektiivi/templates/kollektiivi/members.html:27
 msgid "Jäseniä"
 msgstr ""
 
-#: kollektiivi/models.py:117
+#: kollektiivi/models.py:118
 msgid "Tracker"
 msgstr ""
 
-#: kollektiivi/models.py:118
+#: kollektiivi/models.py:119
 msgid "Trackers"
 msgstr ""
 
-#: kollektiivi/settings.py:137
+#: kollektiivi/settings.py:138
 msgid "Finnish"
 msgstr ""
 
-#: kollektiivi/settings.py:138
+#: kollektiivi/settings.py:139
 msgid "English"
 msgstr ""
 
@@ -111,12 +126,8 @@ msgid "Kollektiivin ylläpito"
 msgstr ""
 
 #: kollektiivi/templates/base.html:24
-#: kollektiivi/templates/kollektiivi/home.html:20
-#: kollektiivi/templates/kollektiivi/home.html:26
-#: kollektiivi/templates/kollektiivi/home.html:32
-#: kollektiivi/templates/kollektiivi/home.html:38
-msgid "strapline"
-msgstr "Suunniteltu ja valmistettu käsin Joensuussa"
+msgid "Kollektiivi Joensuu - käsityö-, taide- ja työtila Joensuun keskustassa."
+msgstr ""
 
 #: kollektiivi/templates/includes/footer.html:19
 msgid "Sähkoposti:"
@@ -127,30 +138,33 @@ msgid "Sortavalankatu 2, 80100 Joensuu"
 msgstr ""
 
 #: kollektiivi/templates/includes/header.html:19
-#: kollektiivi/templates/kollektiivi/home.html:6
+#: kollektiivi/templates/kollektiivi/home.html:16
 msgid "Etusivu"
 msgstr ""
 
-#: kollektiivi/templates/includes/header.html:27
-msgid "Kaikki jäseniä"
-msgstr ""
+#: kollektiivi/templates/kollektiivi/home.html:30
+#: kollektiivi/templates/kollektiivi/home.html:36
+#: kollektiivi/templates/kollektiivi/home.html:42
+#: kollektiivi/templates/kollektiivi/home.html:48
+msgid "strapline"
+msgstr "Suunniteltu ja valmistettu käsin Joensuussa"
 
-#: kollektiivi/templates/kollektiivi/home.html:22
+#: kollektiivi/templates/kollektiivi/home.html:32
 msgid "carousel-art1-caption"
 msgstr ""
 
-#: kollektiivi/templates/kollektiivi/home.html:28
+#: kollektiivi/templates/kollektiivi/home.html:38
 msgid "carousel-lathe1-caption"
 msgstr ""
 
-#: kollektiivi/templates/kollektiivi/home.html:34
+#: kollektiivi/templates/kollektiivi/home.html:44
 msgid "carousel-art2-caption"
 msgstr ""
 
-#: kollektiivi/templates/kollektiivi/home.html:40
+#: kollektiivi/templates/kollektiivi/home.html:50
 msgid "carousel-blacksmith1-caption"
 msgstr ""
 
-#: kollektiivi/templates/kollektiivi/member-profile.html:44
+#: kollektiivi/templates/kollektiivi/member-profile.html:60
 msgid "Yhteys"
 msgstr ""
