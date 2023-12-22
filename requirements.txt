@@ -1,6 +1,6 @@
-django==4.2.7
+django==5.0
 Pillow==10.1.0
 sorl-thumbnail>=12.4,<13.0
 django-ckeditor==6.7.0
-mysqlclient==2.2.0
+mysqlclient==2.2.1
 django-modeltranslation==0.18.11
