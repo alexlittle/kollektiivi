@@ -5,11 +5,12 @@ from django.urls import path, include
 
 from django.conf.urls.i18n import i18n_patterns
     
-from kollektiivi.views import HomeView, PageView, TagView, MembersView, MemberProfileView
+from kollektiivi.views import HomeView, PageView, MembersView, MemberProfileView
 
 app_name = 'kollektiivi'
 
 urlpatterns = [
+    path('tinymce/', include('tinymce.urls')),
     path('i18n/', include('django.conf.urls.i18n'))
     ]
 
@@ -19,7 +20,6 @@ urlpatterns += i18n_patterns(
     path('jäseniä/', MembersView.as_view(), name="members"),
     path('jäseniä/<str:slug>/', MemberProfileView.as_view(), name="member_profile"),
     path('uutiset/', include('blog.urls')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('<str:slug>/', PageView.as_view(), name="page"),
 )
 

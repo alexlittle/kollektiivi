@@ -4,13 +4,12 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
-from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
+from tinymce.models import HTMLField
 
 
 class Page(models.Model):
     title = models.CharField(blank=False, max_length=200)
-    body = RichTextUploadingField(blank=True, null=True, default=None)
+    body = HTMLField(blank=True, null=True, default=None)
     slug = models.SlugField()
     menu_order_by = models.IntegerField(default=0)
     image = models.FileField(upload_to="pages", blank=True, default=None)
@@ -47,7 +46,7 @@ class Page(models.Model):
 
 class Tag(models.Model):
     name = models.TextField(blank=False, null=False)
-    description = RichTextField(blank=True, null=True, default=None)
+    description = HTMLField(blank=True, null=True, default=None)
     slug = models.SlugField()
     created_date = models.DateTimeField(default=timezone.now)
     updated_date = models.DateTimeField(auto_now=True)
@@ -69,13 +68,13 @@ class Tag(models.Model):
 class Member(models.Model):
     name = models.CharField(blank=False, max_length=200)
     strapline = models.CharField(blank=True, null=True, default=None, max_length=200)
-    body = RichTextUploadingField(blank=True, null=True, default=None)
+    body = HTMLField(blank=True, null=True, default=None)
     slug = models.SlugField()
     order_by = models.IntegerField(default=0)
     photo = models.FileField(upload_to="members", blank=True, default=None)
     active = models.BooleanField(default=False)
     visible = models.BooleanField(default=False)
-    contact = RichTextField(blank=True, null=True, default=None)
+    contact = HTMLField(blank=True, null=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL,

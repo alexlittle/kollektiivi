@@ -1,9 +1,10 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
+
+from tinymce.models import HTMLField
 
 from kollektiivi.models import Tracker
 
@@ -12,7 +13,7 @@ class Post(models.Model):
     display_date = models.DateTimeField(default=timezone.now)
     title = models.TextField(blank=False)
     slug = models.SlugField(blank=True, default=None, max_length=200)
-    body = RichTextUploadingField()
+    body = HTMLField()
     image = models.FileField(upload_to="images", blank=True, default=None)
     active = models.BooleanField(default=False)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
