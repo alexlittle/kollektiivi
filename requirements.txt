@@ -1,6 +1,6 @@
-django==5.0.3
+django==5.0.4
 Pillow==10.3.0
 sorl-thumbnail>=12.4,<13.0
-django-tinymce==3.7.1
+django-tinymce==4.0.0
 mysqlclient==2.2.4
 django-modeltranslation==0.18.11
