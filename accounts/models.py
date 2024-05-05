@@ -1,4 +1,7 @@
+from decimal import Decimal
+
 from django.db import models
+from django.db.models import Sum
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
@@ -18,6 +21,7 @@ class Transaction(models.Model):
 
 class Contract(models.Model):
     name = models.CharField(blank=False, max_length=200)
+    contact_name =  models.CharField(blank=True, default=None, max_length=200)
     email = models.CharField(blank=True, default=None, max_length=200)
     phone = models.CharField(blank=True, default=None, max_length=200)
     address = HTMLField(blank=True, null=True, default=None)
@@ -28,6 +32,29 @@ class Contract(models.Model):
     meters_sq = models.DecimalField(decimal_places=1, max_digits=10, default=0)
     deposit_held = models.DecimalField(decimal_places=2, max_digits=20, default=0)
     contract_doc = models.FileField(upload_to="contract", blank=True, default=None)
+
+    def get_monthly_invoice_ex_alv(self):
+        return self.meters_sq * Decimal(Config.get('m2_rate_ex_alv', 0))
+
+    def get_monthly_invoice_inc_alv(self):
+        return self.get_monthly_invoice_ex_alv() * (1+(Decimal(Config.get('alv_rate', 0))/100))
+
+    @staticmethod
+    def get_total_deposit_held():
+        return Contract.objects.filter(active=True).aggregate(total=Sum('deposit_held'))['total']
+
+    @staticmethod
+    def get_total_m2_rented():
+        return Contract.objects.filter(active=True).aggregate(total=Sum('meters_sq'))['total']
+
+    @staticmethod
+    def get_total_monthly_invoices_ex_alv():
+        m2_rate = Decimal(Config.get('m2_rate_ex_alv', 0))
+        return Contract.get_total_m2_rented() * m2_rate
+
+    @staticmethod
+    def get_total_monthly_invoices_inc_alv():
+        return Contract.get_total_monthly_invoices_ex_alv() * (1+(Decimal(Config.get('alv_rate', 0))/100))
 
 class Config(models.Model):
     name = models.CharField(blank=False, max_length=200)
