@@ -1,0 +1,35 @@
+
+{% load i18n %}
+{% load humanize %}
+{% load mathfilters %}
+{% block content %}
+
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{% trans 'Name' %}</th>
+				<th>{% trans 'Start Date' %}</th>
+				<th>{% trans 'Deposit held' %}</th>
+				<th>{% trans 'm2' %}</th>
+				<th>{% trans 'Monthly invoice' %}</th>
+				<th>{% trans 'Actions' %}</th>
+			</tr>
+		</thead>
+		<tbody>
+        {% for c in contracts %}
+         <tr>
+			<td><b>{{ c.name }}</b></td>
+			<td>{{ c.start_date|date:"j M Y" }}</td>
+			<td class="number">{{ c.deposit_held }}</td>
+			<td class="number">{{ c.meters_sq }}</td>
+			<td class="number"></td>
+			 <td><a href="">{% trans 'Edit' %}</a> | <a href="">{% trans 'Contract PDF' %}</a></td>
+		</tr>
+        {% endfor %}
+        </tbody>
+</table>
+</div>
+
+
+{% endblock %}

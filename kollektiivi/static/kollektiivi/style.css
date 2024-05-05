@@ -353,4 +353,8 @@ ul.news-attachments {
     margin-top:10px;
 }
 
+th.number, td.number {
+	text-align:right;
+}
+
 

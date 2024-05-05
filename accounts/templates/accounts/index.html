@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block extra_head_title %}
+{% trans "Accounts & Contracts" %}
+{% endblock extra_head_title %}
+
+{% block content %}
+
+<h2>{% trans "Kollektiivi Accounts & Contracts" %}</h2>
+
+<h3>{% trans "Overview" %}</h3>
+
+<h3>{% trans "Recent Transactions" %}</h3>
+
+<h3>{% trans "Contracts" %}</h3>
+
+{% include "accounts/contracts.html" %}
+
+{% endblock %}
