@@ -3,11 +3,11 @@ from django.db import migrations
 
 def add_initial_config(apps, schema_editor):
     Config = apps.get_model("accounts", "Config")
-    c1, _ = Config.objects.get_or_create(name="account_name")
+    c1, _ = Config.objects.get_or_create(name="org_name")
     c1.value = "Kollektiivi Joensuu ry"
     c1.save()
 
-    c1, _ = Config.objects.get_or_create(name="account_address")
+    c1, _ = Config.objects.get_or_create(name="org_address")
     c1.value = "Sortavalankatu 2, 80100 Joensuu"
     c1.save()
 

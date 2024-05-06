@@ -24,7 +24,7 @@ class Contract(models.Model):
     contact_name =  models.CharField(blank=True, default=None, max_length=200)
     email = models.CharField(blank=True, default=None, max_length=200)
     phone = models.CharField(blank=True, default=None, max_length=200)
-    address = HTMLField(blank=True, null=True, default=None)
+    address = models.CharField(blank=True, null=True, default=None, max_length=200)
     business_id = models.CharField(blank=True, max_length=20, default=None)
     active = models.BooleanField(blank=False, default=False)
     start_date = models.DateTimeField(default=timezone.now)
@@ -71,6 +71,13 @@ class Config(models.Model):
     @staticmethod
     def get_all():
         return Config.objects.all()
+
+    @staticmethod
+    def get_as_dict():
+        config = {}
+        for c in Config.get_all():
+            config[c.name] = c.value
+        return config
 
     @staticmethod
     def get(name, default=None):

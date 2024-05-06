@@ -1,0 +1,177 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% trans 'Contract' %} - {{ contract.name }}</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'includes/bootstrap-4.6.2.min.css' %}" type="text/css"/>
+    <link href="{% static 'kollektiivi/style.css' %}" rel="stylesheet" type="text/css">
+    <style>
+        body {
+          color: #000;
+          font-family: Arial Narrow, sans-serif;
+        }
+        h2 {
+            border-top: 0;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+<div class="container">
+<img src="{% static 'kollektiivi/images/kollektiivi-logo-50px.png' %}" style="padding: 40px 0">
+
+<h1>PALVELUSOPIMUS (Tilat, laitteet ja palvelut)</h1>
+
+<h2>PALVELUNTARJOAJA</h2>
+
+{{ config.org_name }}<br/>
+{{ config.org_address|safe }}<br/>
+Y-tunnus:  {{ config.y_tunnus }}<br/>
+Yhteyshenkilö: {{ config.contact_name }} / p. {{ config.contact_phone }} / {{ config.contact_email }} <br/>
+Palvelumaksutili:  {{ config.account_bank }} {{ config.account_iban }}
+
+
+<h2>PALVELUNSAAJA</h2>
+
+{{ contract.name }}<br/>
+{{ contract.address|safe }}<br/>
+{% if contract.business_id %}
+    Y-tunnus: {{ contract.business_id }}<br/>
+{% endif  %}
+Yhteyshenkilö: {{ contract.contact_name }} / p. {{ contract.phone }} / {{ contract.email }}
+
+<h2>TILAT</h2>
+Joensuun varikkorakennuksesta os. {{ config.org_address }}:<br/>
+Käyttöoikeus (yrityslisenssi) seuraaviin tiloihin:<br/>
+Oikeus erikseen osoitettuihin tiloihin:<br/>
+<ul>
+    <li>n. {{ contract.meters_sq }} m<sup>2</sup> alue, oikeus yhteisiin tiloihin.</li>
+    <li>Tilat ovat käytettävissä päivittäin ja vuorokauden ympäri. Kulku tiloihin tapahtuu ovikoodilla.</li>
+    <li>Kulkuoikeuksien yhteyshenkilönä toimii {{ config.contact_name }} p. {{ config.contact_phone }}.</li>
+    <li>Palvelunsaaja sitoutuu huolehtimaan omalta osaltaan tilojen kunnosta ja siivouksesta.</li>
+    <li>Tilat ovat sopimuksen voimaantulohetken mukaisessa kunnossa, muutokset tiloihin ja tilojen varustukseen
+        mahdollisia.</li>
+    <li>Palvelunsaaja on samalla tullut tietoiseksi kiinteistön laatutasosta ja teknisestä varustelusta.</li>
+    <li>Palvelunsaaja on todennut, että tila soveltuu hänen aikomaansa käyttötarkoitukseen ja täyttää hänen
+        harjoittamaansa toimintaa sääntelevät viranomaisnormit.</li>
+    <li>Jos palveluntarjoaja palvelusopimuksen voimassaoloaikana korottaa kiinteistön laatu-/tai varustelutasoa,
+        sovitaan sen vaikutuksesta kuukausimaksun määrään erikseen.</li>
+    <li>Väärinkäytöksistä johtuvat vahingot tiloille tai laitteistoille laskutetaan täysimääräisinä.</li>
+</ul>
+
+
+<h2>TILOJEN KÄYTTÖTARKOITUS</h2>
+Tilat tarjotaan käytettäväksi ainoastaan seuraaviin toimintoihin:<br/>
+<ul>
+    <li>toimisto-, harraste- ja työtilana.</li>
+    <li>Ilman palveluntarjoajan etukäteen antamaa kirjallista lupaa ei tiloissa saa harjoittaa mitään muuta toimintaa.</li>
+    <li>Palvelunsaaja on velvollinen noudattamaan kiinteistön järjestyssäännöissä olevia määräyksiä sekä muutoinkin
+        noudattamaan tiloja käyttäessään mitä terveellisyyden, järjestyksen ja hyvien tapojen säilymiseksi vaaditaan.
+        Palveluntarjoajan tulee järjestää ja valvoa asiakkaiden opastus niin, että asiakkaat pysyvät oikealla alueella.
+        Kääntöpöydän puolella ja varikkoraiteistolla liikkuminen on kielletty, poikkeuksista tulee sopia palveluntarjoajan
+        kanssa.</li>
+    <li>Liikennöinti tiloihin tulee tapahtua Sortavalankadun kautta. Kontionkadulle vievän huoltotien käyttö on kielletty.</li>
+    <li>Palvelunsaaja hankkii kustannuksellaan toimintansa mahdollisesti edellyttämät viranomaisluvat ja sitoutuu
+        noudattamaan lupien ehtoja. Palvelunsaaja vastaa siitä, että tarvittavat luvat ovat voimassa koko sopimuskauden
+        ajan.</li>
+    <li>Mikäli palvelunsaaja saa oikeuden käyttää tiloja muuhun kuin sopimuksessa mainittuun tarkoitukseen, on
+        palveluntarjoajalla oikeus määritellä maksu uudelleen.</li>
+</ul>
+
+<h2>PALVELUMAKSU</h2>
+<p>Maksettavan palvelumaksun määrä on {{ contract.start_date|date:"j.n.Y" }} alkaen:
+    {{ contract.get_monthly_invoice_ex_alv|floatformat:2 }} &euro;/kk
+    + ALV ({{ contract.get_monthly_invoice_inc_alv|floatformat:2 }} &euro;/kk sis. ALV {{ config.alv_rate }}%)</p>
+<p>Maksuun sisältyy lämpö (puolilämmin tila), vesi, tavanomainen kiinteistösähkö ja normaali kiinteistönhoito sekä
+    ulkoalueiden puhtaanapito ja kunnossapito. Palveluntarjoaja huolehtii ja vastaa talvella oven edustan
+    puhtaanapidosta lumesta ja jäästä.</p>
+
+<h2>PALVELUMAKSUN MAKSAMINEN</h2>
+Kuukausittain kuukauden 1. päivänä.
+
+<h2>PALVELUN KOROTTAMINEN</h2>
+<p>Vuokraa korotetaan vuosittain 1.1 elinkustannusindeksin (1951:10 = 100) muutosta vastaavasti siten, että vuokran
+    suuruus muuttuu samassa suhteessa kuin sanottu indeksi. Indeksin alentuessa vuokraa ei alenneta. Perusindeksinä on
+    vuoden 2023 heinäkuun indeksiluku ja tarkistusindeksinä kunkin vuokrantarkistusajankohtaa edeltävä viimeisimmäksi
+    julkaistu pisteluku.</p>
+<p>Vuokraa korotetaan tämän sopimusehdon mukaisesti ensimmäisen kerran 1.1.2025.</p>
+<p>Jos vuokranantaja vuokrasopimuksen voimassaoloaikana korottaa vuokrattavien tilojen tai niiden sijaintikiinteistön
+    laatu-/tai varustelutasoa, sovitaan sen vaikutuksesta vuokran ja vuokravakuuden määrään erikseen.</p>
+
+<h2>PALVELUSOPIMUKSEN VOIMASSAOLOAIKA</h2>
+<p>Palvelusopimus on voimassa toistaiseksi, kuukausi kerrallaan alkaen {{ contract.start_date|date:"j.n.Y" }}. Molempien
+    osapuolien on mahdollista purkaa tehty sopimus 2kk irtisanomisajalla.</p>
+
+<h2>VAKUUS</h2>
+<p>Vakuutena maksetaan 2kk tilavuokraa vastaava summa {{ contract.deposit_held|floatformat:2 }} &euro;.</p>
+
+<h2>TILOJEN KUNTO, HOITO JA VARTIOINTI</h2>
+<p>Mikäli palveluntarjoaja järjestää vartioinnin, sen kustannukset lisätään maksuun siitä erikseen sopimalla.</p>
+<p>Palvelunsaaja hankkii kustannuksellaan toimintansa edellyttämät koneet ja laitteet, sisustuskalusteet sekä muun
+    tarvitsemansa varustuksen.</p>
+<p>Palvelunsaaja huolehtii kustannuksellaan tiloihin hankkimiensa kalusteiden, koneiden ja laitteiden sekä sisustuksen
+    ja varustuksen huollosta ja kunnossapidosta.</p>
+<p>Atk-laitteet, joita palvelunsaaja liittää talon verkostoon, eivät saa häiritä taloverkon muita käyttäjiä.</p>
+<p>Muut koneet ja laitteet, joita palvelunsaaja asentaa tai tuo tiloihin, eivät saa häiritä kiinteistön muita
+    käyttäjiä eivätkä aiheuttaa haittaa kiinteistön rakenteille.</p>
+<p>Pysäköintialueet on merkitty liitekarttaan (pyydettäessä).  Palvelunsaajan tulee valvoa, että tilaa käyttävät
+    asiakkaat pysäköivät ainoastaan em. alueille sekä huomioivat varikkoalueella olevan muun liikenteen ja pysäköinnin.</p>
+
+<h2>MAINOS YM. LAITTEET JA KILVET</h2>
+<p>Tilojen ulkopuolelle asennettavien mainos- yms. laitteiden ja kilpien osalta tulee niiden sijoittamiseen,
+    rakenteeseen, kokoon, muotoon ja toteutustapaan liittyvistä seikoista sopia Palveluntarjoajan kanssa etukäteen.
+    Mainoslaitteiden ja -kilpien tulee sopeutua niiden koon, muodon, rakenteen ja käytettyjen materiaalien osalta
+    kiinteistön yleisilmeeseen sekä olla rakennusjärjestyksen mukaisia. Tarvittavat luvat hakee palvelunsaaja aina
+    kustannuksellaan.</p>
+
+<h2>VAKUUTUKSET</h2>
+<p>Osapuolet sopivat, että palvelunsaaja vakuuttaa sopimuksen mukaisissa tiloissa olevan oman tai hänen hallussaan
+    olevan kolmannen henkilön omistaman omaisuuden vesi- ja palovahinkojen varalta ja pitää vakuutukset voimassa
+    sopimussuhteen voimassaoloajan.</p>
+
+<h2>VAHINGONVASTUU</h2>
+<p>Palveluntarjoaja ei vastaa mistään vahingosta, mikä tulipalon, varkauden tai minkä muun syyn takia tahansa ehkä
+    aiheutuu palvelunsaajan liiketoiminnalle, koneelle ja laitteelle tai käytetyissä tiloissa olevalle palvelunsaajan
+    tai kolmannen henkilön omaisuudelle. ellei näytetä, että vahinko on johtunut palveluntarjoajan tai sen
+    henkilökunnan tuottamuksesta.</p>
+<p>Palvelunsaaja vastaa kaikesta siitä vahingosta, mikä tilojen käyttämisestä tai harjoitetun liike- tai muun toiminnan
+    johdosta ehkä aiheutuu palveluntarjoajalle tai mistä kolmas henkilö on saanut lakiin perustuen palveluntarjoajalta
+    korvauksen.</p>
+
+<h2>POISMUUTTO</h2>
+<p>Tämän sopimussuhteen päättyessä irtisanomisen tai sopimuskauden loppumisen vuoksi taikka siksi, että se ehtojen
+    noudattamatta jättämisen vuoksi puretaan, on palvelunsaaja velvollinen lakkaamispäivään mennessä poistamaan kaiken
+    omaisuutensa tiloista sekä saattamaan tilat palveluntarjoajan hyväksymään kuntoon normaalisti siivottuina uhalla,
+    että palveluntarjoaja poistaa palvelunsaajan omaisuuden sekä siivoaa ja kunnostaa tilat palvelunsaajan
+    kustannuksella.</p>
+
+ <h2>NOUDATETTAVA LAKI</h2>
+<p>Ellei tässä sopimuksessa muuta ole sovittu, noudatetaan kulloinkin voimassa olevaa lakia liikehuoneiston vuokrauksesta.</p>
+<p>Tätä sopimusta on laadittu kaksi (2) samasanaista kappaletta, yksi kummallekin sopijaosapuolelle.</p>
+
+<table style="margin-top:40px" width="100%">
+    <tr>
+    <td width="45%">
+        {{ config.org_name }}
+        <div style="margin-bottom:20px; height:100px; border-bottom: 1px solid black"></div>
+       <div style="margin-bottom:10px">Nimi:</div>
+        <div style="margin-bottom:10px">Paikka:</div>
+        <div style="margin-bottom:10px">Päivä:</div>
+    </td>
+        <td width="10%"></td>
+    <td width="45%">
+        Palvelunsaaja
+        <div style="margin-bottom:20px; height:100px; border-bottom: 1px solid black"></div>
+        <div style="margin-bottom:10px">Nimi:</div>
+        <div style="margin-bottom:10px">Paikka:</div>
+        <div style="margin-bottom:10px">Päivä:</div>
+    </td>
+</tr>
+</table>
+</div>
+{% endblock %}
+</body>
+</html>

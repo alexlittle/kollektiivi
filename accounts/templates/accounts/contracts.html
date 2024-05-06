@@ -24,7 +24,7 @@
 			<td class="number">{{ c.meters_sq }} m<sup>2</sup></td>
 			<td class="number">{{ c.get_monthly_invoice_ex_alv|floatformat:"2g" }} &euro;</td>
 			 <td class="number">{{ c.get_monthly_invoice_inc_alv|floatformat:"2g" }} &euro;</td>
-			 <td><a href="{% url 'admin:accounts_contract_change' c.id %}">{% trans 'Edit' %}</a> | <a href="">{% trans 'Contract PDF' %}</a></td>
+			 <td><a href="{% url 'admin:accounts_contract_change' c.id %}">{% trans 'Edit' %}</a> | <a href="{% url 'accounts:generate_contract' c.id %}">{% trans 'Contract PDF' %}</a></td>
 		</tr>
         {% endfor %}
 		 <tr>
