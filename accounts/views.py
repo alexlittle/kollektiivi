@@ -1,7 +1,9 @@
 import datetime
 import os
+import tempfile
 from decimal import Decimal
 
+from django.core.files import File
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, ListView, FormView
 
@@ -27,17 +29,18 @@ class AccountsView(TemplateView):
         context['deposit_balance'] = Contract.get_total_deposit_held() - Decimal(Config.get("vr_deposit"))
         context['funds_booked_balance'] = Transaction.get_booked_balance()
         context['funds_available'] = context['funds_booked_balance'] - context['deposit_balance']
-        context['funds_pending'] = 0
+        context['funds_pending'] = Transaction.get_pending_balance()
         context['total_m2_rented'] = Contract.get_total_m2_rented()
         context['total_monthly_invoices_ex_alv'] = Contract.get_total_monthly_invoices_ex_alv()
         context['total_monthly_invoices_inc_alv'] = Contract.get_total_monthly_invoices_inc_alv()
         context['contracts'] = Contract.objects.filter(active=True).order_by('name')
-        context['transactions'] = Transaction.objects.filter(on_statement=False).order_by('-date')
+        context['pending_transactions'] = Transaction.objects.filter(on_statement=False).order_by('-date')
         return context
 
 class TransactionsView(ListView):
 
     template_name = 'accounts/transactions.html'
+    paginate_by = 50
 
     def get(self, request, *args, **kwargs):
         site_tracker.send(sender=None, request=request)
@@ -66,7 +69,6 @@ class CreateInvoicesView(FormView):
         month = '{:02d}'.format(tempdate.month)
         for idx, invoice in enumerate(send_to_ids):
 
-            print(invoice)
             context = {
                 'invoice_date': invoice_date,
                 'due_date': due_date,
@@ -84,33 +86,25 @@ class CreateInvoicesView(FormView):
 
             filename = "invoice-{year}-{month}-{name}-{ref}.pdf".format(year=year,
                                                                         month=month,
-                                                                        name=invoice.name.lower(),
+                                                                        name=invoice.name.lower().replace(" ","-"),
                                                                         ref=ref_nos[idx])
-            output_path = os.path.join('/home/alex/Downloads', filename)
-            with open(output_path, "wb") as f:
-                f.write(response.rendered_content)
+            fp = tempfile.TemporaryFile()
+            fp.write(response.rendered_content)
 
             # save to transactions
+            transaction = Transaction()
+            transaction.description = "Invoice - {name} - {ref}".format(name=invoice.name, ref=ref_nos[idx])
+            transaction.credit = invoice.get_monthly_invoice_inc_alv()
+            transaction.sales_tax_charged = invoice.get_monthly_invoice_alv()
+            transaction.sales_tax_rate = Config.get("alv_rate")
+            transaction.file = File(fp, filename)
+            transaction.save()
+            fp.close()
 
             # email to user
-            '''
-            response = PDFTemplateResponse(request=self.request,
-                                           filename="invoice.pdf",
-                                           template=template,
-                                           context=context)
 
-            filename = "invoice-{year}-{month}-{name}-{ref}.pdf".format(year=year,
-                                                                        month=month,
-                                                                        name=invoice.name.lower(),
-                                                                        ref=ref_nos[idx])
-            output_path = os.path.join(settings.INVOICE_OUTPUT_DIR, filename)
-            with open(output_path, "wb") as f:
-                f.write(response.rendered_content)
 
-            return render(self.request, template, context)
-            '''
-            return render(self.request, template, context)
-        #return super().form_valid(form)
+        return super().form_valid(form)
 
 
 class GenerateContractView(PDFTemplateView):
