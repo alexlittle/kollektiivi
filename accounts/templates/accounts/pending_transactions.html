@@ -29,7 +29,7 @@
 			<td class="number">{{ pt.sales_tax_charged }} &euro;</td>
 			 <td class="number">{{ pt.sales_tax_paid }} &euro;</td>
 			 <td>{% if pt.file %}
-				 <a href="{{ MEDIA_URL }}{{ pt.file }}" target="_blank">{% trans 'View' %}</a>
+				 <a href="{% url 'accounts:get_transaction_file' pt.id %}" target="_blank">{% trans 'View' %}</a>
 				 {% endif %}
 			 </td>
 			 <td><a href="{% url 'admin:accounts_transaction_change' pt.id %}">{% trans 'Edit' %}</a></td>

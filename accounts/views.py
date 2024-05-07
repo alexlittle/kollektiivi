@@ -1,12 +1,16 @@
 
 import calendar
+import os
 import tempfile
+
 from decimal import Decimal
 from datetime import datetime, timedelta
 
+from django.conf import settings
 from django.core.files import File
 from django.db.models import Sum
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, ListView, FormView
 
 from wkhtmltopdf.views import PDFTemplateView, PDFTemplateResponse
@@ -53,6 +57,19 @@ class TransactionsView(ListView):
         qs = Transaction.objects.all().order_by('-date')
         return qs
 
+class GetTransactionFileView(TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        id = kwargs['id']
+        transaction = Transaction.objects.get(pk=id)
+        # Construct the full path to the media file
+        path = os.path.join(settings.ACCOUNTS_FILES_LOCATION, transaction.file.name)
+
+        # Serve the file
+        with open(path, 'rb') as file:
+            response = HttpResponse(file.read(), content_type='application/pdf')
+        response['Content-Disposition'] = 'inline; filename={filename}'.format(filename=transaction.file.name)
+        return response
 
 class TransactionsByMonthView(TemplateView):
 

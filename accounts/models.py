@@ -1,10 +1,13 @@
 from decimal import Decimal
 
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.db.models import Sum
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+accounts_storage = FileSystemStorage(location=settings.ACCOUNTS_FILES_LOCATION)
 
 class Transaction(models.Model):
     date = models.DateTimeField(default=timezone.now)
@@ -15,7 +18,7 @@ class Transaction(models.Model):
     sales_tax_charged = models.DecimalField(decimal_places=2, max_digits=20, default=0)
     sales_tax_paid = models.DecimalField(decimal_places=2, max_digits=20, default=0)
     sales_tax_rate = models.DecimalField(decimal_places=2, max_digits=20, default=0)
-    file = models.FileField(upload_to="transaction", blank=True, default=None)
+    file = models.FileField(storage=accounts_storage, blank=True, default=None)
 
     @staticmethod
     def get_booked_balance():
@@ -57,7 +60,7 @@ class Contract(models.Model):
     end_date = models.DateTimeField(default=timezone.now)
     meters_sq = models.DecimalField(decimal_places=1, max_digits=10, default=0)
     deposit_held = models.DecimalField(decimal_places=2, max_digits=20, default=0)
-    contract_doc = models.FileField(upload_to="contract", blank=True, default=None)
+    contract_doc = models.FileField(storage=accounts_storage, blank=True, default=None)
 
     def __str__(self):
         return "{name} - {ex_alv} + {alv} = {total}".format(name=self.name,

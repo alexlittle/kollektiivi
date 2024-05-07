@@ -2,12 +2,18 @@ from django.urls import path
 from django.views.generic import TemplateView
 from django.contrib.admin.views.decorators import staff_member_required
 
-from accounts.views import AccountsView, GenerateContractView, TransactionsView, CreateInvoicesView, TransactionsByMonthView
+from accounts.views import (AccountsView,
+                            GenerateContractView,
+                            TransactionsView,
+                            CreateInvoicesView,
+                            TransactionsByMonthView,
+                            GetTransactionFileView)
 app_name = 'accounts'
 
 urlpatterns = [
     path('', staff_member_required(AccountsView.as_view()), name="home"),
     path('contract/<int:id>/', staff_member_required(GenerateContractView.as_view()), name="generate_contract"),
+    path('transaction/file/<int:id>/', staff_member_required(GetTransactionFileView.as_view()), name="get_transaction_file"),
     path('transactions/', staff_member_required(TransactionsView.as_view()), name="transactions_view"),
     path('transactions/<int:year>/<int:month>/',
          staff_member_required(TransactionsByMonthView.as_view()),

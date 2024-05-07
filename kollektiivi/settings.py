@@ -164,6 +164,7 @@ WKHTMLTOPDF_CMD_OPTIONS = {'encoding': 'utf8',
                            "enable-local-file-access": "",
                             "enable-smart-shrinking": ""}
 
+ACCOUNTS_FILES_LOCATION = "/home/kollektiivi/accounts/"
 try:
     from config.local_settings import *
 except ImportError:
