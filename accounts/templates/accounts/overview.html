@@ -8,7 +8,7 @@
 		<tbody>
 		<tr>
 			<td class="header">{% trans 'Funds Available' %}</td>
-			 <td>{{ funds_available|floatformat:"2g" }} &euro;</td>
+			 <td class="{% if funds_available < 0%}negative{% endif %}">{{ funds_available|floatformat:"2g" }} &euro;</td>
 		</tr>
         <tr>
 			<td class="header">{% trans 'Booked Balance' %}</td>

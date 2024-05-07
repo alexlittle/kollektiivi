@@ -21,6 +21,14 @@
 
 {% include "accounts/overview.html" %}
 
+<h3>{% trans "Monthly Accounts" %}</h3>
+
+<ul>
+{% for tm in transaction_months %}
+    <li><a href="{% url 'accounts:transactions_by_month_view' tm.year tm.month %}">{{ tm|date:"M Y" }}</a></li>
+{% endfor %}
+</ul>
+
 <h3>{% trans "Pending Transactions" %}</h3>
 
 {% include "accounts/pending_transactions.html" %}

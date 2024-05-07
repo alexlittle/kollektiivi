@@ -5,7 +5,6 @@ from django.db.models import Sum
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from tinymce.models import HTMLField
 
 class Transaction(models.Model):
     date = models.DateTimeField(default=timezone.now)
@@ -33,6 +32,18 @@ class Transaction(models.Model):
             return total
         else:
             return 0
+
+    @staticmethod
+    def get_balance_at_date(date):
+        trans = Transaction.objects.filter(date__lte=date, on_statement=True).aggregate(credit_sum=Sum("credit"), debit_sum=Sum('debit'))
+        if trans['debit_sum'] is None and trans['credit_sum'] is None:
+            return 0
+        elif trans['debit_sum'] is None:
+            return trans['credit_sum']
+        elif trans['credit_sum'] is None:
+            return trans['debit_sum']
+        else:
+            return trans['credit_sum'] - trans['debit_sum']
 
 class Contract(models.Model):
     name = models.CharField(blank=False, max_length=200)
