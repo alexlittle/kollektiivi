@@ -357,4 +357,29 @@ th.number, td.number {
 	text-align:right;
 }
 
+/* management
+--------------------------*/
+td.header {
+	font-weight: bold;
+}
 
+/* invoice
+--------------------------*/
+td.invoice-align-top {
+    vertical-align: top;
+}
+td.invoice-table-header-right {
+    text-align: right;
+    font-weight:bold;
+}
+td.invoice-table-header-left {
+    text-align: left;
+    font-weight: bold;
+}
+td.invoice-align-right {
+    text-align: right;
+}
+td.invoice-table-header {
+    text-align: center;
+    font-weight:bold;
+}

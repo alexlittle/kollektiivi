@@ -161,7 +161,8 @@ TINYMCE_DEFAULT_CONFIG = {
 
 WKHTMLTOPDF_CMD = "/usr/local/bin/wkhtmltopdf"
 WKHTMLTOPDF_CMD_OPTIONS = {'encoding': 'utf8',
-                           "enable-local-file-access": ""}
+                           "enable-local-file-access": "",
+                            "enable-smart-shrinking": ""}
 
 try:
     from config.local_settings import *

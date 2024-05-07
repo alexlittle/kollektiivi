@@ -1,0 +1,33 @@
+{% load i18n %}
+{% load humanize %}
+{% load mathfilters %}
+{% block content %}
+
+<div class="table-responsive">
+	<table class="table table-striped">
+		<tbody>
+		<tr>
+			<td class="header">{% trans 'Funds Available' %}</td>
+			 <td>{{ funds_available|floatformat:"2g" }} &euro;</td>
+		</tr>
+        <tr>
+			<td class="header">{% trans 'Booked Balance' %}</td>
+			 <td>{{ funds_booked_balance|floatformat:"2g" }} &euro;</td>
+		</tr>
+		<tr>
+			<td class="header">{% trans 'Deposit Balance' %}</td>
+			 <td>{{ deposit_balance|floatformat:"2g" }} &euro;</td>
+		</tr>
+		<tr>
+			<td class="header">{% trans 'Pending Balance' %}</td>
+			 <td>{{ funds_pending|floatformat:"2g" }} &euro;</td>
+		</tr>
+		<tr>
+			<td class="header">{% trans 'm2 rented' %}</td>
+			 <td>{{ total_m2_rented }} m<sup>2</sup></td>
+		</tr>
+        </tbody>
+</table>
+</div>
+
+{% endblock %}

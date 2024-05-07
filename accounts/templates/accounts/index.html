@@ -7,11 +7,23 @@
 
 {% block content %}
 
-<h2>{% trans "Kollektiivi Accounts & Contracts" %}</h2>
+{% include "accounts/includes/accounts_header.html" %}
+
+<h3>{% trans "Actions" %}</h3>
+
+<a href="{% url 'admin:accounts_transaction_add' %}">{% trans "Add transaction" %}</a>
+|
+<a href="{% url 'accounts:transactions_view' %}">{% trans "View all transactions" %}</a>
+|
+<a href="{% url 'accounts:create_invoices' %}">{% trans "Generate Monthly Invoices" %}</a>
 
 <h3>{% trans "Overview" %}</h3>
 
-<h3>{% trans "Recent Transactions" %}</h3>
+{% include "accounts/overview.html" %}
+
+<h3>{% trans "Pending Transactions" %}</h3>
+
+{% include "accounts/pending_transactions.html" %}
 
 <h3>{% trans "Contracts" %}</h3>
 

@@ -1,0 +1,41 @@
+
+{% load i18n %}
+{% load humanize %}
+{% load mathfilters %}
+{% block content %}
+
+{% if pending_transactions %}
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{% trans 'Date' %}</th>
+				<th>{% trans 'Description' %}</th>
+				<th>{% trans 'Credit' %}</th>
+				<th>{% trans 'Debit' %}</th>
+				<th>{% trans 'ALV charged' %}</th>
+				<th>{% trans 'ALV Paid' %}</th>
+                <th>{% trans 'Actions' %}</th>
+			</tr>
+		</thead>
+		<tbody>
+        {% for pt in pending_transactions %}
+         <tr>
+			<td>{{ pt.date }}</td>
+             <td>{{ pt.description }}</b></td>
+			<td class="number">{{ pt.credit }} &euro;</td>
+			<td class="number">{{ pt.debit}} </td>
+			<td class="number">{{ pt.sales_tax_charged }} &euro;</td>
+			 <td class="number">{{ pt.sales_tax_paid }} &euro;</td>
+			 <td><a href="{% url 'admin:accounts_transaction_change' pt.id %}">{% trans 'Edit' %}</a></td>
+		</tr>
+        {% endfor %}
+        </tbody>
+</table>
+</div>
+{% else %}
+    {% trans 'No transactions pending' %}
+{% endif %}
+
+
+{% endblock %}

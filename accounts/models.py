@@ -18,6 +18,21 @@ class Transaction(models.Model):
     sales_tax_rate = models.DecimalField(decimal_places=2, max_digits=20, default=0)
     file = models.FileField(upload_to="transaction", blank=True, default=None)
 
+    @staticmethod
+    def get_booked_balance():
+        total = Transaction.objects.filter(on_statement=True).aggregate(total=Sum('credit')-Sum('debit'))['total']
+        if total:
+            return total
+        else:
+            return 0
+
+    @staticmethod
+    def get_pending_balance():
+        total = Transaction.objects.filter(on_statement=False).aggregate(total=Sum('credit') - Sum('debit'))['total']
+        if total:
+            return total
+        else:
+            return 0
 
 class Contract(models.Model):
     name = models.CharField(blank=False, max_length=200)
@@ -33,11 +48,19 @@ class Contract(models.Model):
     deposit_held = models.DecimalField(decimal_places=2, max_digits=20, default=0)
     contract_doc = models.FileField(upload_to="contract", blank=True, default=None)
 
+    def __str__(self):
+        return "{name} - {ex_alv} + {alv} = {total}".format(name=self.name,
+                                                            ex_alv=self.get_monthly_invoice_ex_alv(),
+                                                            alv=self.get_monthly_invoice_alv(),
+                                                            total=self.get_monthly_invoice_inc_alv())
     def get_monthly_invoice_ex_alv(self):
-        return self.meters_sq * Decimal(Config.get('m2_rate_ex_alv', 0))
+        return round(self.meters_sq * Decimal(Config.get('m2_rate_ex_alv', 0)),2)
+
+    def get_monthly_invoice_alv(self):
+        return round(self.get_monthly_invoice_ex_alv() * (Decimal(Config.get('alv_rate', 0))/100), 2)
 
     def get_monthly_invoice_inc_alv(self):
-        return self.get_monthly_invoice_ex_alv() * (1+(Decimal(Config.get('alv_rate', 0))/100))
+        return self.get_monthly_invoice_ex_alv() + self.get_monthly_invoice_alv()
 
     @staticmethod
     def get_total_deposit_held():

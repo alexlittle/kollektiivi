@@ -1,0 +1,116 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% trans 'Receipt' %}</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'includes/bootstrap-4.6.2.min.css' %}" type="text/css"/>
+     <link href="{% static 'kollektiivi/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container">
+    <table width="100%">
+        <tr>
+            <td width="60%" class="invoice-align-top">
+               <img src="{% static 'kollektiivi/images/kollektiivi-logo-50px.png' %}" style="padding: 0">
+            </td>
+            <td width="40%" align="right">
+                   {{ config.org_name }}
+                    <p>{{ config.org_address }}</p>
+                    <p>{{ config.contact_email }}<br/>
+                    {{ config.contact_phone }}</p>
+                    <p>Y-tunnus: {{ config.y_tunnus }}</p>
+            </td>
+
+        </tr>
+    </table>
+
+
+<h1 style="text-align:center; margin-bottom:50px;">Lasku</h1>
+<table width="100%">
+    <tr>
+        <td class="invoice-align-top">
+            <b>{{ invoice_info.name }}</b><br/>
+            {{ invoice_info.address|safe }}<br/>
+            {% if invoice_info.business_id %}
+                Y-tunnus: {{ invoice_info.business_id }}<br/>
+            {% endif %}
+        </td>
+        <td class="invoice-align-top">
+            <strong>Laskun päiväys</strong><br/>
+            {{ invoice_date }}
+        </td>
+        <td class="invoice-align-top">
+            <strong>Eräpäivä</strong><br/>
+            {{ due_date }}<br/>
+            <br/>
+            <strong>Viite #</strong><br/>
+            {{ ref }}
+        </td>
+    </tr>
+
+
+</table>
+
+<h2>{{ title }}</h2>
+
+<table width="100%">
+    <tr>
+        <td class="invoice-table-header">Tuote</td>
+        <td class="invoice-table-header-right">Hinta</td>
+        <td class="invoice-table-header-right">ALV %</td>
+        <td class="invoice-table-header-right">Hinta sis. ALV</td>
+        <td class="invoice-table-header-right">Yhteensä</td>
+    </tr>
+
+    <tr>
+        <td class="">Kuukausmaksu</td>
+        <td class="invoice-align-right">{{ invoice_info.get_monthly_invoice_ex_alv }} &euro;</td>
+        <td class="invoice-align-right">{{ config.alv_rate }}%</td>
+        <td class="invoice-align-right">{{ invoice_info.get_monthly_invoice_inc_alv }} &euro;</td>
+        <td class="invoice-align-right">{{ invoice_info.get_monthly_invoice_inc_alv }} &euro;</td>
+    </tr>
+
+    <tr>
+        <td colspan="4" class="invoice-table-header-right">Yhteensä veroton</td>
+        <td class="invoice-align-right">{{ invoice_info.get_monthly_invoice_ex_alv}} &euro;</td>
+    </tr>
+
+    <tr>
+        <td colspan="4" class="invoice-table-header-right">ALV {{ config.alv_rate }}%</td>
+        <td class="invoice-align-right">{{ invoice_info.get_monthly_invoice_alv }} &euro;</td>
+    </tr>
+
+    <tr>
+        <td colspan="4" class="invoice-table-header-right">Yhteensä</td>
+        <td class="invoice-table-header-right">{{ invoice_info.get_monthly_invoice_inc_alv }} &euro;</td>
+    </tr>
+</table>
+
+
+
+<h2>Maksutiedot</h2>
+
+<table width="100%">
+    <tr>
+        <td class="invoice-table-header-left">Vastaanottajan nimi</td>
+        <td class="invoice-table-header-left">IBAN/BIC</td>
+        <td class="invoice-table-header-left">Viite #</td>
+    </tr>
+    <tr >
+        <td class="invoice-align-top">{{ config.org_name }}</td>
+        <td class="invoice-align-top">{{ config.account_iban }}<br/>{{ config.account_bic }}</td>
+        <td class="invoice-align-top">{{ ref }}</td>
+    </tr>
+</table>
+
+
+
+    <div style="text-align:center; margin-top:100px;">
+        Y-tunnus (Business ID & ALV no) - {{ config.y_tunnus }}
+    </div>
+</div>
+</body>
+</html>
