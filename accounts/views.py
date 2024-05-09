@@ -5,18 +5,19 @@ import tempfile
 
 from decimal import Decimal
 from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 
 from django.conf import settings
 from django.core.files import File
 from django.db.models import Sum
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, ListView, FormView
 
 from wkhtmltopdf.views import PDFTemplateView, PDFTemplateResponse
 
 from accounts.models import Transaction, Contract, Config
-from accounts.forms import InvoicesForm
+from accounts.forms import InvoicesForm, CustomInvoiceForm
 
 from kollektiivi.signals import site_tracker
 
@@ -176,6 +177,100 @@ class CreateInvoicesView(FormView):
 
         return super().form_valid(form)
 
+class CustomInvoiceView(FormView):
+    template_name = 'accounts/custom_invoice.html'
+    form_class = CustomInvoiceForm
+
+    def get(self, request, *args, **kwargs):
+        site_tracker.send(sender=None, request=request)
+        contract = get_object_or_404(Contract, id=kwargs['id'])
+        now = datetime.now()
+        next_month = now + relativedelta(months=1)
+        self.initial = {
+            'to_name': contract.name,
+            'to_address': contract.address,
+            'to_ytunnus': contract.business_id,
+            'invoice_title':  "Palvelupaketti {month}/{year} (service fee)".format(month=next_month.month, year=next_month.year),
+            'description_1': "Kuukausmaksu",
+            'amount_ex_alv_1': contract.get_monthly_invoice_ex_alv(),
+            'amount_alv_rate_1': Config.get("alv_rate")
+        }
+
+        form = self.form_class(initial=self.initial)
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            # <process form cleaned data>
+            total_ex_alv = 0
+            total_alv = 0
+            total_inc_alv = 0
+            invoice_lines = []
+
+            for i in range(1,4):
+                if form.cleaned_data['description_{i}'.format(i=i)]:
+                    line_amount_ex_alv = Decimal(form.cleaned_data['amount_ex_alv_{i}'.format(i=i)])
+                    line_amount_alv = line_amount_ex_alv * Decimal(form.cleaned_data['amount_alv_rate_{i}'.format(i=i)]/100)
+                    line_amount_inc_alv = round(line_amount_ex_alv + line_amount_alv,2)
+                    invoice_line = {
+                        'description': form.cleaned_data['description_{i}'.format(i=i)],
+                        'amount_ex_alv': round(line_amount_ex_alv,2),
+                        'amount_alv_rate': form.cleaned_data['amount_alv_rate_{i}'.format(i=i)],
+                        'amount_inc_alv': line_amount_inc_alv
+                    }
+                    invoice_lines.append(invoice_line)
+                    total_ex_alv = total_ex_alv + line_amount_ex_alv
+                    total_alv = total_alv + line_amount_alv
+                    total_inc_alv = total_inc_alv + line_amount_inc_alv
+
+            context = {
+                'config': Config.get_as_dict(),
+                'to_name': form.cleaned_data['to_name'],
+                'to_address': form.cleaned_data['to_address'],
+                'to_ytunnus': form.cleaned_data['to_ytunnus'],
+                'invoice_date': form.cleaned_data['invoice_date'],
+                'due_date': form.cleaned_data['due_date'],
+                'ref': form.cleaned_data['ref'],
+                'invoice_title': form.cleaned_data['invoice_title'],
+                'total_ex_alv': round(total_ex_alv,2),
+                'total_alv': round(total_alv,2),
+                'total_inc_alv': round(total_inc_alv,2),
+                'invoice_lines': invoice_lines
+            }
+
+
+
+            filename = "invoice-{year}-{month}-{name}-{ref}.pdf".format(year=2024,
+                                                                        month=5,
+                                                                        name=form.cleaned_data['to_name'].lower().replace(" ", "-"),
+                                                                        ref=form.cleaned_data['ref'])
+            response = PDFTemplateResponse(request=self.request,
+                                           filename=filename,
+                                           template='accounts/custom_invoice_template.html',
+                                           context=context)
+            response['Content-Disposition'] = 'inline; filename={filename}'.format(filename=filename)
+
+            # add to transactions
+            fp = tempfile.TemporaryFile()
+            fp.write(response.rendered_content)
+
+            # save to transactions
+            transaction = Transaction()
+            transaction.description = "Invoice - {name} - {ref}".format(name=context['to_name'], ref=context['ref'])
+            transaction.credit = context['total_inc_alv']
+            transaction.sales_tax_charged = context['total_alv']
+            transaction.sales_tax_rate = Config.get("alv_rate")
+            transaction.file = File(fp, filename)
+            transaction.save()
+            fp.close()
+
+            return response
+
+
+        return render(request, self.template_name, {"form": form})
+    def form_valid(self, form):
+        return super().form_valid(form)
 
 class GenerateContractView(PDFTemplateView):
 

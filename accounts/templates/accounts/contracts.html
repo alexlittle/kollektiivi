@@ -11,8 +11,8 @@
 				<th>{% trans 'Name' %}</th>
 				<th>{% trans 'Deposit held' %}</th>
 				<th>m<sup>2</sup></th>
-				<th>{% trans 'Monthly invoice (ex ALV)' %}</th>
-				<th>{% trans 'Monthly invoice (inc ALV)' %}</th>
+				<th>{% trans 'Monthly invoice<br/>(ex ALV)' %}</th>
+				<th>{% trans 'Monthly invoice<br/>(inc ALV)' %}</th>
 				<th>{% trans 'Actions' %}</th>
 			</tr>
 		</thead>
@@ -24,7 +24,9 @@
 			<td class="number">{{ c.meters_sq }} m<sup>2</sup></td>
 			<td class="number">{{ c.get_monthly_invoice_ex_alv|floatformat:"2g" }} &euro;</td>
 			 <td class="number">{{ c.get_monthly_invoice_inc_alv|floatformat:"2g" }} &euro;</td>
-			 <td><a href="{% url 'admin:accounts_contract_change' c.id %}">{% trans 'Edit' %}</a> | <a href="{% url 'accounts:generate_contract' c.id %}">{% trans 'Contract PDF' %}</a></td>
+			 <td><a href="{% url 'admin:accounts_contract_change' c.id %}">{% trans 'Edit' %}</a>
+				 | <a href="{% url 'accounts:generate_contract' c.id %}">{% trans 'Contract PDF' %}</a>
+			 | <a href="{% url 'accounts:generate_custom_invoice' c.id %}">{% trans 'Custom Invoice' %}</a></td>
 		</tr>
         {% endfor %}
 		 <tr>

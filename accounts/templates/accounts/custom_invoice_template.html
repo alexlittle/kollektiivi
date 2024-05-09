@@ -32,10 +32,10 @@
 <table width="100%">
     <tr>
         <td class="invoice-align-top">
-            <b>{{ invoice_info.name }}</b><br/>
-            {{ invoice_info.address|safe }}<br/>
-            {% if invoice_info.business_id %}
-                Y-tunnus: {{ invoice_info.business_id }}<br/>
+            <b>{{ to_name }}</b><br/>
+            {{ to_address|safe }}<br/>
+            {% if to_ytunnus %}
+                Y-tunnus: {{ to_ytunnus }}<br/>
             {% endif %}
         </td>
         <td class="invoice-align-top">
@@ -53,7 +53,7 @@
 
 </table>
 
-<h2>{{ title }}</h2>
+<h2>{{ invoice_title }}</h2>
 
 <table width="100%">
     <tr>
@@ -64,27 +64,28 @@
         <td class="invoice-table-header-right">Yhteensä</td>
     </tr>
 
-    <tr>
-        <td class="">Kuukausmaksu</td>
-        <td class="invoice-align-right">{{ invoice_info.get_monthly_invoice_ex_alv }} &euro;</td>
-        <td class="invoice-align-right">{{ config.alv_rate }}%</td>
-        <td class="invoice-align-right">{{ invoice_info.get_monthly_invoice_inc_alv }} &euro;</td>
-        <td class="invoice-align-right">{{ invoice_info.get_monthly_invoice_inc_alv }} &euro;</td>
-    </tr>
-
+    {% for il in invoice_lines %}
+        <tr>
+            <td class="">{{ il.description }}</td>
+            <td class="invoice-align-right">{{ il.amount_ex_alv }} &euro;</td>
+            <td class="invoice-align-right">{{ il.amount_alv_rate }}%</td>
+            <td class="invoice-align-right">{{ il.amount_inc_alv }} &euro;</td>
+            <td class="invoice-align-right">{{ il.amount_inc_alv }} &euro;</td>
+        </tr>
+    {% endfor %}
     <tr>
         <td colspan="4" class="invoice-table-header-right">Yhteensä veroton</td>
-        <td class="invoice-align-right">{{ invoice_info.get_monthly_invoice_ex_alv}} &euro;</td>
+        <td class="invoice-align-right">{{ total_ex_alv }} &euro;</td>
     </tr>
 
     <tr>
         <td colspan="4" class="invoice-table-header-right">ALV {{ config.alv_rate }}%</td>
-        <td class="invoice-align-right">{{ invoice_info.get_monthly_invoice_alv }} &euro;</td>
+        <td class="invoice-align-right">{{ total_alv }} &euro;</td>
     </tr>
 
     <tr>
         <td colspan="4" class="invoice-table-header-right">Yhteensä</td>
-        <td class="invoice-table-header-right">{{ invoice_info.get_monthly_invoice_inc_alv }} &euro;</td>
+        <td class="invoice-table-header-right">{{ total_inc_alv }} &euro;</td>
     </tr>
 </table>
 

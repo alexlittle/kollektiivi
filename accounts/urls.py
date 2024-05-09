@@ -7,12 +7,14 @@ from accounts.views import (AccountsView,
                             TransactionsView,
                             CreateInvoicesView,
                             TransactionsByMonthView,
-                            GetTransactionFileView)
+                            GetTransactionFileView,
+                            CustomInvoiceView)
 app_name = 'accounts'
 
 urlpatterns = [
     path('', staff_member_required(AccountsView.as_view()), name="home"),
     path('contract/<int:id>/', staff_member_required(GenerateContractView.as_view()), name="generate_contract"),
+    path('contract/<int:id>/custominvoice/', staff_member_required(CustomInvoiceView.as_view()), name="generate_custom_invoice"),
     path('transaction/file/<int:id>/', staff_member_required(GetTransactionFileView.as_view()), name="get_transaction_file"),
     path('transactions/', staff_member_required(TransactionsView.as_view()), name="transactions_view"),
     path('transactions/<int:year>/<int:month>/',
