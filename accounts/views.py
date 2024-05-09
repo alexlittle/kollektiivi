@@ -239,12 +239,9 @@ class CustomInvoiceView(FormView):
                 'invoice_lines': invoice_lines
             }
 
-
-
-            filename = "invoice-{year}-{month}-{name}-{ref}.pdf".format(year=2024,
-                                                                        month=5,
-                                                                        name=form.cleaned_data['to_name'].lower().replace(" ", "-"),
-                                                                        ref=form.cleaned_data['ref'])
+            filename = "invoice-{month}-{name}-{ref}.pdf".format(month=datetime.now().strftime("%Y-%m"),
+                                                                 name=form.cleaned_data['to_name'].lower().replace(" ", "-"),
+                                                                 ref=form.cleaned_data['ref'])
             response = PDFTemplateResponse(request=self.request,
                                            filename=filename,
                                            template='accounts/custom_invoice_template.html',
