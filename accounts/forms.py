@@ -7,8 +7,8 @@ from accounts.models import Contract
 
 def set_due_date():
     now = datetime.datetime.now()
-    next_month = now + relativedelta(months=1)
-    return datetime.datetime(next_month.year, next_month.month, 1)
+    due_date = now + relativedelta(day=31)
+    return datetime.datetime(due_date.year, due_date.month, due_date.day)
 
 def set_title():
     now = datetime.datetime.now()
@@ -24,6 +24,9 @@ class InvoicesForm(forms.Form):
     ref_nos = forms.CharField(max_length=200)
     send_to = forms.ModelMultipleChoiceField(widget=forms.CheckboxSelectMultiple,
                                              queryset=Contract.objects.filter(active=True))
+    email = forms.BooleanField(initial=False, required=False)
+    email_subject = forms.CharField(max_length=200, required=False)
+    email_body = forms.CharField(max_length=500, required=False)
 
 
 class CustomInvoiceForm(forms.Form):

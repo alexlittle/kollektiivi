@@ -10,7 +10,7 @@ from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.core.files import File
 from django.db.models import Sum
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, ListView, FormView
 
@@ -18,6 +18,7 @@ from wkhtmltopdf.views import PDFTemplateView, PDFTemplateResponse
 
 from accounts.models import Transaction, Contract, Config
 from accounts.forms import InvoicesForm, CustomInvoiceForm
+from accounts.utils import send_invoice_email
 
 from kollektiivi.signals import site_tracker
 
@@ -125,57 +126,74 @@ class CreateInvoicesView(FormView):
 
     def get(self, request, *args, **kwargs):
         site_tracker.send(sender=None, request=request)
+        now = datetime.now()
+        next_month = now + relativedelta(months=1)
+        due_date = (now + relativedelta(day=31)).strftime("%d.%m.%Y")
+        email_subject = "Kollektiivi Lasku - {date}".format(date=next_month.strftime("%B %Y"))
+        self.initial = {
+            'email_subject': email_subject,
+            'email_body': "Due Date: {date}".format(date=due_date)
+        }
+
         return super().get(request, *args, **kwargs)
 
-    def form_valid(self, form):
-        invoice_date = form.cleaned_data['issue_date']
-        due_date = form.cleaned_data['due_date']
-        title = form.cleaned_data['title']
-        send_to_ids = form.cleaned_data['send_to']
-        ref_nos = form.cleaned_data['ref_nos'].split(',')
-        template = 'accounts/invoice_template.html'
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            invoice_date = form.cleaned_data['issue_date']
+            due_date = form.cleaned_data['due_date']
+            title = form.cleaned_data['title']
+            send_to_ids = form.cleaned_data['send_to']
+            ref_nos = form.cleaned_data['ref_nos'].split(',')
+            template = 'accounts/invoice_template.html'
 
-        tempdate = datetime.strptime(due_date, "%d.%m.%Y").date()
-        year = tempdate.year
-        month = '{:02d}'.format(tempdate.month)
-        for idx, invoice in enumerate(send_to_ids):
-
-            context = {
-                'invoice_date': invoice_date,
-                'due_date': due_date,
-                'title': title,
-                'ref': ref_nos[idx],
-                'invoice_info': invoice,
-                'config': Config.get_as_dict()
-            }
-
-            # create pdf invoice
-            response = PDFTemplateResponse(request=self.request,
-                                           filename="invoice.pdf",
-                                           template=template,
-                                           context=context)
-
-            filename = "invoice-{year}-{month}-{name}-{ref}.pdf".format(year=year,
-                                                                        month=month,
-                                                                        name=invoice.name.lower().replace(" ","-"),
-                                                                        ref=ref_nos[idx])
-            fp = tempfile.TemporaryFile()
-            fp.write(response.rendered_content)
-
-            # save to transactions
-            transaction = Transaction()
-            transaction.description = "Invoice - {name} - {ref}".format(name=invoice.name, ref=ref_nos[idx])
-            transaction.credit = invoice.get_monthly_invoice_inc_alv()
-            transaction.sales_tax_charged = invoice.get_monthly_invoice_alv()
-            transaction.sales_tax_rate = Config.get("alv_rate")
-            transaction.file = File(fp, filename)
-            transaction.save()
-            fp.close()
-
-            # email to user
+            tempdate = datetime.strptime(due_date, "%d.%m.%Y").date()
+            year = tempdate.year
+            month = '{:02d}'.format(tempdate.month)
 
 
-        return super().form_valid(form)
+            for idx, invoice in enumerate(send_to_ids):
+
+                context = {
+                    'invoice_date': invoice_date,
+                    'due_date': due_date,
+                    'title': title,
+                    'ref': ref_nos[idx],
+                    'invoice_info': invoice,
+                    'config': Config.get_as_dict()
+                }
+
+                # create pdf invoice
+                pdf = PDFTemplateResponse(request=self.request,
+                                               filename="invoice.pdf",
+                                               template=template,
+                                               context=context)
+
+                filename = "invoice-{year}-{month}-{name}-{ref}.pdf".format(year=year,
+                                                                            month=month,
+                                                                            name=invoice.name.lower().replace(" ","-"),
+                                                                            ref=ref_nos[idx])
+                fp = tempfile.TemporaryFile()
+                fp.write(pdf.rendered_content)
+
+                # save to transactions
+                transaction = Transaction()
+                transaction.description = "Invoice - {name} - {ref}".format(name=invoice.name, ref=ref_nos[idx])
+                transaction.credit = invoice.get_monthly_invoice_inc_alv()
+                transaction.sales_tax_charged = invoice.get_monthly_invoice_alv()
+                transaction.sales_tax_rate = Config.get("alv_rate")
+                transaction.file = File(fp, filename)
+                transaction.save()
+                fp.close()
+
+                # email to user
+                if form.cleaned_data['email']:
+                    email_subject = form.cleaned_data['email_subject']
+                    email_body = form.cleaned_data['email_body']
+                    send_invoice_email(invoice.email, email_subject, email_body, transaction.file.path)
+            return HttpResponseRedirect(self.success_url)
+
+        return render(request, self.template_name, {"form": form})
 
 class CustomInvoiceView(FormView):
     template_name = 'accounts/custom_invoice.html'
