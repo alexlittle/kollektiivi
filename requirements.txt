@@ -3,7 +3,7 @@ Pillow==10.4.0
 sorl-thumbnail>=12.4,<13.0
 django-tinymce==4.1.0
 mysqlclient==2.2.4
-django-modeltranslation==0.19.5
+django-modeltranslation==0.19.7
 django-wkhtmltopdf==3.4.0
 django-mathfilters==1.0.0
 python-dateutil==2.9.0.post0
